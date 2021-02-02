@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Alike&family=Roboto&display=swap");
 /* @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"); */
 
 :root {
@@ -23,8 +24,7 @@ body.wp-docs {
 h1,
 h2,
 h3,
-h4,
-h5 {
+h4 {
   font-weight: bold;
   margin: 0;
   color: var(--color-primary);
@@ -48,6 +48,8 @@ h4 {
 h5 {
   font-size: 20px;
   line-height: calc(20px + var(--font-scale));
+  font-family: Alike;
+  color: #e1735c;
 }
 
 p,
@@ -74,13 +76,28 @@ td {
   color: #4e566d;
 }
 
-code {
+a {
   color: #e1735c;
+}
+code {
+  color: #4c81c9;
 }
 
 code.attribute {
   color: var(--color-primary);
   font-weight: bold;
+}
+
+pre code {
+  background-color: #dfe9ee;
+  border: 1px solid #999;
+  border-radius: 10px;
+  display: block;
+  padding: 20px;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
 }
 
 /* main
@@ -153,12 +170,13 @@ code.attribute {
   color: #425466;
   position: sticky;
   top: 0;
-  background-color: white;
+  /* background-color: white; */
   border-bottom: 1px solid #d5d5d5;
   border-top: 1px solid #d5d5d5;
   font-weight: bold;
   font-size: 24px;
   font-weight: 300;
+  background-image: linear-gradient(#f79d69, #e1735c);
 }
 .wp-docs-content-tab .anchor {
   display: inline;
@@ -215,7 +233,7 @@ code.attribute {
   width: 24px;
   height: 24px;
   border-radius: 100px;
-  background-color: var(--color-primary);
+  background-color: #37405b;
   color: var(--color-tertiary);
   font-size: 14px;
   line-height: 24px;
