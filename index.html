@@ -43,8 +43,26 @@
             <div class="wp-icon e"></div>
             <a href="#Response">Response from Payload</a>
           </li>
+          <li>
+            <ul>
+              <li>Important Links</li>
+              <li>
+                <div class="wp-icon a"></div>
+                <a href="https://help.workpath.co/en/" target="blank">Platform Documentation</a>
+              </li>
+              <li>
+                <div class="wp-icon b"></div>
+                <a href="https://www.workpath.co">Workpath Website</a>
+              </li>
+              <li>
+                <div class="wp-icon c"></div>
+                <a href="https://www.workpath.co/start">Contact Us</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
+
       <!-- /sidebar -->
 
       <!-- content -->
@@ -54,73 +72,126 @@
           <h3 class="thin secondary">The path connecting telehealth and in-home healthcare.</h3>
         </header>
 
-        <header class="wp-docs-content-tab">
-          <span class="count" id="GetStarted">1</span> Getting Started
-          <div class="anchor">
-            <img src="images/icon-link.png" />
-          </div>
-        </header>
-        <article>
-          <p>
-            This document outlines the behaviors expected from Intake API Version 2 (V2). The Workpath REST API provides programmatic access to
-            Workpath data for use in client applications and partner integrations. This is a working document as we continue to update our API.
-          </p>
-          <p>
-            For general information visit this link:
-            <a href="https://www.workpath.co/api" target="blank">Workpath Intake API Overview</a>
-          </p>
-          <p>
-            Access to our Client Management Dashboard can be found
-            <a href="https://api.workpath.co" target="blank">here</a>.
-          </p>
-        </article>
-
-        <header class="wp-docs-content-tab">
-          <span class="count" id="Authentication">2</span> Authentication and Keys
-          <div class="anchor">
-            <img src="images/icon-link.png" />
-          </div>
-        </header>
+        <header class="wp-docs-content-tab"><span class="count" id="GetStarted">1</span> Getting Started</header>
         <div class="container">
           <div class="row">
-            <div class="col">
-              <div class="row">
-                <div class="col">
-                  <p>
-                    Token resources provide authorized access to the API using the OAuth 2.0
-                    <a href="https://tools.ietf.org/html/rfc6749#section-4.3" target="blank"> password credential grant type flow </a>. Applications
-                    with a valid API key+password can exchange the email+password of a Workpath user for a temporary access token. All requests to the
-                    API are made in the context of an authenticated user via an access token.
-                  </p>
-                  <p>User resources provide authentication and config settings for individual users.</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <h3>Authorization Code</h3>
-                  <p>
-                    The authorization code grant type is initiated from your client application. A URL will be constructed with specific parameters
-                    and navigated to, where the user will then sign in to Workpath. After a successful sign in, the user will authorize your
-                    application to access their information and then be redirected back to your client. The redirection URL will include a code that
-                    can be exchanged for an access token.
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <h5>Authorization Code Initiation</h5>
-                  <p>
-                    This step will be initiated by your application. Your application will generate and store the required attributes which it can
-                    later reference when the request is sent back to your redirect URI. It will need to generate two random strings, one for the state
-                    and one for the code_verifier. Workpath will send the state back with the code to your redirect URI, so make sure your application
-                    saves the code verifier that can be referenced by the state later on.
-                  </p>
-                  <p>--Attributes Table--</p>
-                </div>
-                <div class="col-6"></div>
-              </div>
+            <div class="col-6">
+              <p>
+                This document outlines the behaviors expected from Intake API Version 2 (V2). The Workpath REST API provides programmatic access to
+                Workpath data for use in client applications and partner integrations. This is a working document as we continue to update our API.
+              </p>
+              <p>
+                For general information visit this link:
+                <a href="https://www.workpath.co/api" target="blank">Workpath Intake API Overview</a>
+              </p>
+              <p>
+                Access to our Client Management Dashboard can be found
+                <a href="https://api.workpath.co" target="blank">here</a>.
+              </p>
+            </div>
+          </div>
+        </div>
 
-              <h3>Token Exchange</h3>
+        <header class="wp-docs-content-tab"><span class="count" id="Authentication">2</span> Authentication and Keys</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                Token resources provide authorized access to the API using the OAuth 2.0
+                <a href="https://tools.ietf.org/html/rfc6749#section-4.3" target="blank"> password credential grant type flow </a>. Applications with
+                a valid API key+password can exchange the email+password of a Workpath user for a temporary access token. All requests to the API are
+                made in the context of an authenticated user via an access token.
+              </p>
+              <p>User resources provide authentication and config settings for individual users.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h3>Authorization Code</h3>
+              <p>
+                The authorization code grant type is initiated from your client application. A URL will be constructed with specific parameters and
+                navigated to, where the user will then sign in to Workpath. After a successful sign in, the user will authorize your application to
+                access their information and then be redirected back to your client. The redirection URL will include a code that can be exchanged for
+                an access token.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Authorization Code Initiation</h5>
+              <p>
+                This step will be initiated by your application. Your application will generate and store the required attributes which it can later
+                reference when the request is sent back to your redirect URI. It will need to generate two random strings, one for the state and one
+                for the code_verifier. Workpath will send the state back with the code to your redirect URI, so make sure your application saves the
+                code verifier that can be referenced by the state later on.
+              </p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td colspan="2">
+                      <p class="cell">Request Attributes</p>
+                      <p><code>GET https://api.workpath.co/oauth/authorize</code></p>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>API Credential key associated with client generated <a href="http://api.workpath.co" target="blank">here</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">redirect_uri</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code_challenge</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code_challenge_method</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">response_type</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">onboarding</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6"></div>
+          </div>
+          <h3>Token Exchange</h3>
+          <div class="row">
+            <div class="col-6">
               <h5>Authorization Code Grant Type</h5>
               <p>
                 This step will take place once the request is sent back to your redirect URI. Two parameters will be available as query parameters,
@@ -131,8 +202,84 @@
                 Alternatively, if anything went wrong during authorization, an error_type and error_description will be sent as query params to allow
                 your application to show the error accordingly.
               </p>
-              <p>--Attributes Table--</p>
-              <p>--Response Attributes Table--</p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Response Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
               <pre>
                 <code>
                   {
@@ -144,6 +291,10 @@
                   }                  
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
               <h5>Client Credential Grant Type</h5>
               <p>
                 Issue a new access token. Requests can include an HTTP Basic authorization header representing a valid API key and password or
@@ -161,8 +312,84 @@
                 <strong>Note:</strong> the content encoding for this endpoint is 'application/x-www-form-urlencoded', unlike the 'application/json'
                 used by all other API methods.
               </p>
-              <p>--Attributes Table--</p>
-              <p>--Response Attributes Table--</p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Response Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
               <pre>
                 <code>
                   {
@@ -178,240 +405,806 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab">
-          <span class="count" id="Credential">3</span> Credential Management
-          <div class="anchor">
-            <img src="images/icon-link.png" />
-          </div>
-        </header>
-        <article>
+        <header class="wp-docs-content-tab"><span class="count" id="Credential">3</span> Credential Management</header>
+        <div class="container">
           <h3>API Credentials</h3>
-          <p>
-            All API credential requests require a BasicAuth header by using a previously created API credential. The provided BasicAuth header will
-            then be used to determine if the request is allowed based on the API credential being accessed, only API credentials with the same
-            associated client will work with each other. For API credential creation, the associated BasicAuth credential provided in the request will
-            be used to create another API credential associated with the same client. Cross-client access is not allowed and will result in an
-            unauthorized response.
-          </p>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                All API credential requests require a BasicAuth header by using a previously created API credential. The provided BasicAuth header
+                will then be used to determine if the request is allowed based on the API credential being accessed, only API credentials with the
+                same associated client will work with each other. For API credential creation, the associated BasicAuth credential provided in the
+                request will be used to create another API credential associated with the same client. Cross-client access is not allowed and will
+                result in an unauthorized response.
+              </p>
+            </div>
+            <div class="col-6"></div>
+          </div>
           <h3>Create API Credentials</h3>
-          <h5>Create API Credential</h5>
-          <p>Adds a new API Credential (limit 2 for each client).</p>
-          <p>--Response Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "id": 1001,
-                "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "is_active": false,
-                "last_login_at": "2016-12-06T15:50:49.402Z",
-                "created_at": "2016-12-06T15:50:49.402Z",
-                "updated_at": "2016-12-06T15:50:49.402Z",
-                "secret": "SX0LGy6z!Pa~,V-!A:az"
-              }                  
-            </code>
-          </pre>
+          <div class="row">
+            <div class="col-6">
+              <h5>Create API Credential</h5>
+              <p>Adds a new API Credential (limit 2 for each client).</p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Reponse Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "id": 1001,
+                    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "is_active": false,
+                    "last_login_at": "2016-12-06T15:50:49.402Z",
+                    "created_at": "2016-12-06T15:50:49.402Z",
+                    "updated_at": "2016-12-06T15:50:49.402Z",
+                    "secret": "SX0LGy6z!Pa~,V-!A:az"
+                  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
           <h3>Retrieve API Credential</h3>
-          <h5>Retrieve API Credential</h5>
-          <p>Retrieve details for an API Credential.</p>
-          <p>--Attributes Table--</p>
-          <p>--Response Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "id": 1001,
-                "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "is_active": false,
-                "last_login_at": "2016-12-06T15:50:49.402Z",
-                "created_at": "2016-12-06T15:50:49.402Z",
-                "updated_at": "2016-12-06T15:50:49.402Z"
-              }                  
-            </code>
-          </pre>
-          <h5>Retrieve API Credential List</h5>
-          <p>
-            Retrieve list of API Credentials associated with authenticating client. Will come back as an array of the API Credential response object
-            above.
-          </p>
+          <div class="row">
+            <div class="col-6">
+              <h5>Retrieve API Credential</h5>
+              <p>Retrieve details for an API Credential.</p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Response Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "id": 1001,
+                    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "is_active": false,
+                    "last_login_at": "2016-12-06T15:50:49.402Z",
+                    "created_at": "2016-12-06T15:50:49.402Z",
+                    "updated_at": "2016-12-06T15:50:49.402Z"
+                  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Retrieve API Credential List</h5>
+              <p>
+                Retrieve list of API Credentials associated with authenticating client. Will come back as an array of the API Credential response
+                object above.
+              </p>
+            </div>
+            <div class="col-6"></div>
+          </div>
           <h3>Update API Credential</h3>
-          <h5>Update API Credential</h5>
-          <p>Modifies an individual API Credential.</p>
-          <p>--Parameters Table--</p>
-          <p>--Attributes Table--</p>
-          <p>--Response Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "id": 1001,
-                "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "is_active": false,
-                "last_login_at": "2016-12-06T15:50:49.402Z",
-                "created_at": "2016-12-06T15:50:49.402Z",
-                "updated_at": "2016-12-06T15:50:49.402Z"
-              }                  
-            </code>
-          </pre>
-          <h5>Delete API Credential</h5>
-          <p>Deletes a Device in a User.</p>
-          <p>--Parameters Table--</p>
-        </article>
-
-        <header class="wp-docs-content-tab">
-          <span class="count" id="Send">4</span> Payload Shapes
-          <div class="anchor">
-            <img src="images/icon-link.png" />
+          <div class="row">
+            <div class="col-6">
+              <h5>Update API Credential</h5>
+              <p>Modifies an individual API Credential.</p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Response Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Parameters</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <pre>
+                <code>
+                  {
+                    "id": 1001,
+                    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "is_active": false,
+                    "last_login_at": "2016-12-06T15:50:49.402Z",
+                    "created_at": "2016-12-06T15:50:49.402Z",
+                    "updated_at": "2016-12-06T15:50:49.402Z"
+                  }                  
+                </code>
+              </pre>
+            </div>
           </div>
-        </header>
-        <article>
-          <p>
-            To start the appointment process, we require a certain amount of information from you about your patient, the provider of your patient,
-            what labs you are wanting to run, and insurance information (if applicable). Below is a detailed list of the attributes that are needed in
-            the payload you will send to us.
-          </p>
+          <div class="row">
+            <div class="col-6">
+              <h5>Delete API Credential</h5>
+              <p>Deletes a Device in a User.</p>
+            </div>
+            <div class="col-6">
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Parameters Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Send">4</span> Payload Shapes</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                To start the appointment process, we require a certain amount of information from you about your patient, the provider of your
+                patient, what labs you are wanting to run, and insurance information (if applicable). Below is a detailed list of the attributes that
+                are needed in the payload you will send to us.
+              </p>
+            </div>
+            <div class="col-6"></div>
+          </div>
           <h3>Patient Object</h3>
-          <p>
-            Required information regarding your patient that needs to be sent to us. We will follow up with your patient and make sure that all the
-            information is correct.
-          </p>
-          <p>--Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "first_name": "",
-                "last_name": "",
-                "biological_sex": "",
-                "custom_id": "",
-                "date_of_birth": "",
-                "phone_number": "",
-                "email": "",
-                "address": {
-                  "street": "",
-                  "street2": "",
-                  "city": "",
-                  "state": "",
-                  "zip": "",
-                  "country": "",
-                }
-              }                                
-            </code>
-          </pre>
-          <h3>Insurance Object</h3>
-          <p>
-            If you do not know this information, simply send us an empty object and we will request the information from your patient directly. This
-            information is only needed if your patient has insurance that they will be using to pay for the requested labs/tests.
-          </p>
-          <p>--Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "person_id": 0, 
-                "company_name": "",
-                "company_address": {
-                  "street": "",
-                  "street2": "",
-                  "city": "",
-                  "state": "",
-                  "zip": "",
-                  "country": "",
-                },
-                "company_phone": "",
-                "group_number": "",
-                "relationship": "",
-                "policy_number": "",
-                "guarantor_id": 0, // person.id
-                "insured_person_id": 0 // person.id
-              }                                
-            </code>
-          </pre>
-          <h3>Payment Object</h3>
-          <p>If you do not know this information, simply send us an empty object and we will request the information from your patient directly.</p>
-          <p>--Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "id": 1001,
-                "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "is_active": false,
-                "last_login_at": "2016-12-06T15:50:49.402Z",
-                "created_at": "2016-12-06T15:50:49.402Z",
-                "updated_at": "2016-12-06T15:50:49.402Z",
-                "secret": "SX0LGy6z!Pa~,V-!A:az"
-              }                  
-            </code>
-          </pre>
-          <h3>Intake Object</h3>
-          <p>
-            The intake object contains all of the information about the provider ordering the tests or labs as well as what specific tests or labs
-            need to be run. We ask for multiple unique identifiers.
-          </p>
-          <p>--Attributes Table--</p>
-          <pre>
-            <code>
-              {
-                "id": 1001,
-                "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
-                "is_active": false,
-                "last_login_at": "2016-12-06T15:50:49.402Z",
-                "created_at": "2016-12-06T15:50:49.402Z",
-                "updated_at": "2016-12-06T15:50:49.402Z",
-                "secret": "SX0LGy6z!Pa~,V-!A:az"
-              }                  
-            </code>
-          </pre>
-        </article>
-
-        <header class="wp-docs-content-tab">
-          <span class="count" id="Response">5</span> Response from Payload
-          <div class="anchor">
-            <img src="images/icon-link.png" />
+          <div class="row">
+            <div class="col-6">
+              <p>
+                Required information regarding your patient that needs to be sent to us. We will follow up with your patient and make sure that all
+                the information is correct.
+              </p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "first_name": "",
+                    "last_name": "",
+                    "biological_sex": "",
+                    "custom_id": "",
+                    "date_of_birth": "",
+                    "phone_number": "",
+                    "email": "",
+                    "address": {
+                      "street": "",
+                      "street2": "",
+                      "city": "",
+                      "state": "",
+                      "zip": "",
+                      "country": "",
+                    }
+                  }                                
+                </code>
+              </pre>
+            </div>
           </div>
-        </header>
-        <article>
-          <p>
-            Once we receive your payload, a unique Workpath request ID will be created and sent back to you in the response. You should expect to see
-            a JSON response similar to the following:
-          </p>
-          <pre>
-            <code>
-              {
-                "request_id": 12345
-              }                  
-            </code>
-          </pre>
-          <p>
-            If your request comes back to you with a status of anything other than 200 - OK, please refer to the sections below for more detailed
-            information regarding error codes and validation messages.
-          </p>
+          <h3>Insurance Object</h3>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
+                This information is only needed if your patient has insurance that they will be using to pay for the requested labs/tests.
+              </p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "person_id": 0, 
+                    "company_name": "",
+                    "company_address": {
+                      "street": "",
+                      "street2": "",
+                      "city": "",
+                      "state": "",
+                      "zip": "",
+                      "country": "",
+                    },
+                    "company_phone": "",
+                    "group_number": "",
+                    "relationship": "",
+                    "policy_number": "",
+                    "guarantor_id": 0, // person.id
+                    "insured_person_id": 0 // person.id
+                  }                                
+                </code>
+              </pre>
+            </div>
+          </div>
+          <h3>Payment Object</h3>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
+              </p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "id": 1001,
+                    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "is_active": false,
+                    "last_login_at": "2016-12-06T15:50:49.402Z",
+                    "created_at": "2016-12-06T15:50:49.402Z",
+                    "updated_at": "2016-12-06T15:50:49.402Z",
+                    "secret": "SX0LGy6z!Pa~,V-!A:az"
+                  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+          <h3>Intake Object</h3>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                The intake object contains all of the information about the provider ordering the tests or labs as well as what specific tests or labs
+                need to be run. We ask for multiple unique identifiers.
+              </p>
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "id": 1001,
+                    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+                    "is_active": false,
+                    "last_login_at": "2016-12-06T15:50:49.402Z",
+                    "created_at": "2016-12-06T15:50:49.402Z",
+                    "updated_at": "2016-12-06T15:50:49.402Z",
+                    "secret": "SX0LGy6z!Pa~,V-!A:az"
+                  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Response">5</span> Response from Payload</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                Once we receive your payload, a unique Workpath request ID will be created and sent back to you in the response. You should expect to
+                see a JSON response similar to the following:
+              </p>
+              <p>
+                If your request comes back to you with a status of anything other than 200 - OK, please refer to the sections below for more detailed
+                information regarding error codes and validation messages.
+              </p>
+            </div>
+            <div class="col-6">
+              <pre>
+                <code>
+                  {
+                    "request_id": 12345
+                  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
           <h3>Error Codes / Messaging</h3>
-          <p>
-            In the situation where you receive an error code in the response from us, you should receive a message describing the error in more
-            detail. An example of an error would be invalid credentials or a missing field. Listed below are error codes and messages that you could
-            receive from us. Please note that these are only error messages from the Workpath API. Generic error codes are listed at the end of this
-            document for your reference.
-          </p>
-          <p>--Table--</p>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                In the situation where you receive an error code in the response from us, you should receive a message describing the error in more
+                detail. An example of an error would be invalid credentials or a missing field. Listed below are error codes and messages that you
+                could receive from us. Please note that these are only error messages from the Workpath API. Generic error codes are listed at the end
+                of this document for your reference.
+              </p>
+            </div>
+            <div class="col-6">
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
           <h3>Validation / Messaging</h3>
-          <p>
-            There are certain fields that need to be formatted in a given way in order to be processed correctly. If one of these fields is not in the
-            correct format, you will receive a validation message from us stating one of the following things:
-          </p>
-          <p>--Table--</p>
+          <div class="row">
+            <div class="col-6">
+              <p>
+                There are certain fields that need to be formatted in a given way in order to be processed correctly. If one of these fields is not in
+                the correct format, you will receive a validation message from us stating one of the following things:
+              </p>
+            </div>
+            <div class="col-6">
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
           <h3>Handling Nested Relationships</h3>
-          <p>*ask Ryan and Elliott</p>
+          <div class="row">
+            <div class="col-6">
+              <p>*ask Ryan and Elliott</p>
+            </div>
+            <div class="col-6"></div>
+          </div>
           <h3>Fields Not Meeting Quest Order Requirements</h3>
-          <p>*ERROR - Name needs to be sent as First Name and Last Name, Last Name is missing *etc.</p>
-          <h3>Fields Not Meeting Our Own Storage Requirements</h3>
-          <p>*ex. Using ^ as a delimiter in payload</p>
+          <div class="row">
+            <div class="col-6">
+              <p>*ERROR - Name needs to be sent as First Name and Last Name, Last Name is missing *etc.</p>
+            </div>
+            <div class="col-6"></div>
+          </div>
+          <div class="row">
+            <h3>Fields Not Meeting Our Own Storage Requirements</h3>
+            <div class="col-6">
+              <p>*ex. Using ^ as a delimiter in payload</p>
+            </div>
+            <div class="col-6"></div>
+          </div>
           <h3>Standard Errors (Auth Errors, etc.)</h3>
-          <p>Below is a standard HTTP code summary for your convenience. We use conventional HTTP response codes most like other APIs.</p>
-          <p>--Table--</p>
-        </article>
+          <div class="row">
+            <div class="col-6">
+              <p>Below is a standard HTTP code summary for your convenience. We use conventional HTTP response codes most like other APIs.</p>
+            </div>
+            <div class="col-6">
+              <table class="table table-bordered table-sm">
+                <thead>
+                  <tr>
+                    <td>Request Attributes</td>
+                    <td>GET https://api.workpath.co/oauth/authorize</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- /content -->
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script

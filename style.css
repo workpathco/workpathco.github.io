@@ -4,7 +4,7 @@
 :root {
   --font-scale: 12px;
   --color-primary: #435058;
-  --color-secondary: #185bde;
+  --color-secondary: #e1735c;
   --color-tertiary: #e8e8e8;
 }
 
@@ -59,6 +59,28 @@ li {
 }
 p.small {
   font-size: 0.8rem;
+}
+p.cell {
+  margin: 0;
+}
+
+.row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+td {
+  font-size: 15px;
+  color: #4e566d;
+}
+
+code {
+  color: #e1735c;
+}
+
+code.attribute {
+  color: var(--color-primary);
+  font-weight: bold;
 }
 
 /* main
