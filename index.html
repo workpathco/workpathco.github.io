@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Workpath API</title>
+    <meta
+      name="description"
+      content="The Workpath API provides programmatic access to Workpath data for use in client applications and partner integrations."
+    />
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,10 +43,6 @@
           <li>
             <i class="bi bi-person-badge wp-icon"></i>
             <a href="#People">People</a>
-          </li>
-          <li>
-            <i class="bi bi-person-lines-fill wp-icon"></i>
-            <a href="#Patient">Patient</a>
           </li>
           <li>
             <i class="bi bi-credit-card wp-icon"></i>
@@ -88,7 +89,8 @@
           <h3 class="thin secondary">The path connecting telehealth and in-home healthcare.</h3>
         </header>
 
-        <header class="wp-docs-content-tab"><span class="count" id="GetStarted">1</span> Getting Started</header>
+        <a id="GetStarted"></a>
+        <header class="wp-docs-content-tab"><span class="count">1</span> Getting Started</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
@@ -108,22 +110,17 @@
               </p>
               <p>
                 Access to our Client Management Dashboard can be found
-                <a href="https://api.workpath.co" target="blank">here</a>.
+                <a href="https://api.workpath.co/clients" target="blank">here</a>.
               </p>
             </div>
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="Authentication">2</span> Authentication and Keys</header>
+        <a id="Authentication"></a>
+        <header class="wp-docs-content-tab"><span class="count">2</span> Authentication and Keys</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
-              <p>
-                Token resources provide authorized access to the API using the OAuth 2.0
-                <a href="https://tools.ietf.org/html/rfc6749#section-4.3" target="blank"> password credential grant type flow </a>. Applications with
-                a valid API key+password can exchange the email+password of a Workpath user for a temporary access token. All requests to the API are
-                made in the context of an authenticated user via an access token.
-              </p>
               <p>User resources provide authentication and config settings for individual users.</p>
             </div>
           </div>
@@ -196,13 +193,6 @@
                       <p class="small">required</p>
                     </td>
                     <td>Always use <code>code</code>.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">onboarding</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>Used to show themed login page. Use <code>0</code> to disable onboarding view.</td>
                   </tr>
                 </tbody>
               </table>
@@ -478,7 +468,8 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="Credential">3</span> Credential Management</header>
+        <a id="Credential"></a>
+        <header class="wp-docs-content-tab"><span class="count">3</span> Credential Management</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
@@ -651,12 +642,6 @@
                       <p class="cell"><code class="attribute">updated_at</code> <code>string</code></p>
                     </td>
                     <td>Indicates when the API credential was last updated.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">secret</code> <code>string</code></p>
-                    </td>
-                    <td>API key password.</td>
                   </tr>
                 </tbody>
               </table>
@@ -855,20 +840,22 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="People">4</span> People</header>
+        <a id="People"></a>
+        <header class="wp-docs-content-tab"><span class="count">4</span> People</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
               <h2>Create, Update, Retrieve, Delete People</h2>
               <p>
-                These are the endpoints you will need to hit in order to create a Guarantor, and an Insured Person for the Insurance Object later on.
+                These are the endpoints you will need to hit in order to create a Patient, Guarantor, and an Insured Person for the Insurance Object
+                later on.
               </p>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
               <h4>Create A Person</h4>
-              <p>Create a new person.</p>
+              <p>Create a new Person.</p>
             </div>
           </div>
           <div class="row">
@@ -897,6 +884,16 @@
                       <p class="small">required</p>
                     </td>
                     <td>Gender of the Person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The biological sex of the Person. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
+                      Unknown.
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -930,6 +927,12 @@
                   </tr>
                   <tr>
                     <td>
+                      <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                    </td>
+                    <td>Is messaging enabled for the Person?</td>
+                  </tr>
+                  <tr>
+                    <td>
                       <p class="cell"><code class="attribute">addresses</code> <code>array</code></p>
                       <p class="small">required</p>
                     </td>
@@ -942,41 +945,41 @@
                               <p class="cell"><code class="attribute">street</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s street address.</td>
+                            <td>The Person's street address.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
                             </td>
-                            <td>The patient’s street address.</td>
+                            <td>The Person's street address.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">city</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s city.</td>
+                            <td>The Person's city.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">state</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s state.</td>
+                            <td>The Person's state.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s zip code.</td>
+                            <td>The Person's zip code.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">country</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s country.</td>
+                            <td>The Person's country.</td>
                           </tr>
                           <tr>
                             <td>
@@ -1021,9 +1024,11 @@
     "last_name": "Schmoseph",
     "dob": "1977-06-01",
     "gender": "female",
+    "biological_sex": "Female",
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
+    "messaging_enabled": true,
     "addresses": [
       {
         "id": 1001,
@@ -1048,7 +1053,7 @@
           <div class="row">
             <div class="col-6">
               <h4>Update A Person</h4>
-              <p>Modify a person.</p>
+              <p>Modify a Person.</p>
             </div>
           </div>
           <div class="row">
@@ -1080,6 +1085,16 @@
                   </tr>
                   <tr>
                     <td>
+                      <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The biological sex of the Person. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
+                      Unknown.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
                       <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
                       <p class="small">required</p>
                     </td>
@@ -1108,6 +1123,12 @@
                     </td>
                     <td>A link to the Person's profile picture if applicable.</td>
                   </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                    </td>
+                    <td>Is messaging enabled for the Person?</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -1120,9 +1141,11 @@
     "last_name": "Schmoseph",
     "dob": "1977-06-01",
     "gender": "female",
+    "biological_sex": "Female",
     "phone": "+17183211234",
     "email": "testguy@example.com",
-    "photo_url": "https://example.com/pic.png"
+    "photo_url": "https://example.com/pic.png",
+    "messaging_enabled": true
   }                                
                 </code>
               </pre>
@@ -1137,7 +1160,7 @@
                     <td>
                       <p class="cell"><code class="attribute">id</code> <code>number</code></p>
                     </td>
-                    <td>The ID of the created person.</td>
+                    <td>The ID of the created Person.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1159,6 +1182,16 @@
                   </tr>
                   <tr>
                     <td>
+                      <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The biological sex of the Person. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
+                      Unknown.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
                       <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
                     </td>
                     <td>The Person's date of birth.</td>
@@ -1186,23 +1219,29 @@
                   </tr>
                   <tr>
                     <td>
+                      <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                    </td>
+                    <td>Is messaging enabled for the Person?</td>
+                  </tr>
+                  <tr>
+                    <td>
                       <p class="cell"><code class="attribute">addresses</code> <code>array</code></p>
                     </td>
-                    <td>An array of address objects attached to the person.</td>
+                    <td>An array of address objects attached to the Person.</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">tags</code> <code>array</code></p>
                       <p class="small">optional</p>
                     </td>
-                    <td>An array of tag objects attached to the person.</td>
+                    <td>An array of tag objects attached to the Person.</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">documents</code> <code>array</code></p>
                       <p class="small">optional</p>
                     </td>
-                    <td>An array of document objects attached to the person.</td>
+                    <td>An array of document objects attached to the Person.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1216,9 +1255,11 @@
     "name": "Joseph Schmoseph",
     "dob": "1977-06-01",
     "gender": "female",
+    "biological_sex": "Female",
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
+    "messaging_enabled": true,
     "addresses": [
       {
         "id": 1001,
@@ -1261,7 +1302,7 @@
           <div class="row">
             <div class="col-6">
               <h4>Retrieve Person</h4>
-              <p>Retrieve details for a person.</p>
+              <p>Retrieve details for a Person.</p>
             </div>
           </div>
           <div class="row">
@@ -1290,7 +1331,7 @@
                     <td>
                       <p class="cell"><code class="attribute">id</code> <code>number</code></p>
                     </td>
-                    <td>The ID of the created person.</td>
+                    <td>The ID of the created Person.</td>
                   </tr>
                   <tr>
                     <td>
@@ -1309,6 +1350,16 @@
                       <p class="cell"><code class="attribute">gender</code> <code>string</code></p>
                     </td>
                     <td>Gender of the Person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The biological sex of the Person. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
+                      Unknown.
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -1339,23 +1390,29 @@
                   </tr>
                   <tr>
                     <td>
+                      <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                    </td>
+                    <td>Is messaging enabled for the Person?</td>
+                  </tr>
+                  <tr>
+                    <td>
                       <p class="cell"><code class="attribute">addresses</code> <code>array</code></p>
                     </td>
-                    <td>An array of address objects attached to the person.</td>
+                    <td>An array of address objects attached to the Person.</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">tags</code> <code>array</code></p>
                       <p class="small">optional</p>
                     </td>
-                    <td>An array of tag objects attached to the person.</td>
+                    <td>An array of tag objects attached to the Person.</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">documents</code> <code>array</code></p>
                       <p class="small">optional</p>
                     </td>
-                    <td>An array of document objects attached to the person.</td>
+                    <td>An array of document objects attached to the Person.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1369,9 +1426,11 @@
     "name": "Joseph Schmoseph",
     "dob": "1977-06-01",
     "gender": "female",
+    "biological_sex": "Female",
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
+    "messaging_enabled": true,
     "addresses": [
       {
         "id": 1001,
@@ -1427,7 +1486,7 @@
                     <td>
                       <p class="cell"><code class="attribute">id</code> <code>string</code></p>
                     </td>
-                    <td>ID of the person being deleted.</td>
+                    <td>ID of the Person being deleted.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1435,177 +1494,8 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="Patient">5</span> Patient</header>
-        <div class="container">
-          <div class="row">
-            <div class="col-6">
-              <h2>Patient Object</h2>
-              <p>
-                Required information regarding your patient that needs to be sent to us. We will follow up with your patient and make sure that all
-                the information is correct.
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <h5>Request Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
-                <tbody>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>Patient's first name.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">middle_name</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>Patient's middle name or initial name.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>Patient's last name.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>
-                      The biological sex of the patient. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
-                      Unknown.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">custom_id</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>Unique patient identifier.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>The patient’s date of birth.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">phone_number</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>
-                      The patient’s phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
-                      “+18045551234”.
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">email</code> <code>string</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>The patient’s email address.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">opt_out_messaging</code> <code>boolean</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>Whether or not the patient would like to receive messages from our system.</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="cell"><code class="attribute">address</code> <code>object</code></p>
-                      <p class="small">required</p>
-                    </td>
-                    <td>
-                      <p class="cell">The patient's address fields.</p>
-                      <table class="table table-light table-sm table-borderless">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <p class="cell"><code class="attribute">street</code> <code>string</code></p>
-                              <p class="small">required</p>
-                            </td>
-                            <td>The patient’s street address.</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
-                              <p class="small">required</p>
-                            </td>
-                            <td>The patient’s street address.</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="cell"><code class="attribute">city</code> <code>string</code></p>
-                              <p class="small">required</p>
-                            </td>
-                            <td>The patient’s city.</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="cell"><code class="attribute">state</code> <code>string</code></p>
-                              <p class="small">required</p>
-                            </td>
-                            <td>The patient’s state.</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
-                              <p class="small">required</p>
-                            </td>
-                            <td>The patient’s zip code.</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p class="cell"><code class="attribute">country</code> <code>string</code></p>
-                              <p class="small">required</p>
-                            </td>
-                            <td>The patient’s country.</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="col-6">
-              <h5>Example Patient JSON</h5>
-              <pre>
-                <code>
-  {
-    "first_name": "",
-    "last_name": "",
-    "biological_sex": "",
-    "custom_id": "",
-    "date_of_birth": "",
-    "phone_number": "",
-    "email": "",
-    "address": {
-      "street": "",
-      "street2": "",
-      "city": "",
-      "state": "",
-      "zip": "",
-      "country": "",
-    }
-  }                                
-                </code>
-              </pre>
-            </div>
-          </div>
-        </div>
-
-        <header class="wp-docs-content-tab"><span class="count" id="Payment">6</span> Payment</header>
+        <a id="Payment"></a>
+        <header class="wp-docs-content-tab"><span class="count">5</span> Payment</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
@@ -1659,7 +1549,8 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="Insurance">7</span> Insurance Information</header>
+        <a id="Insurance"></a>
+        <header class="wp-docs-content-tab"><span class="count">6</span> Insurance Information</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
@@ -1821,7 +1712,8 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="Intake">8</span> Intake</header>
+        <a id="Intake"></a>
+        <header class="wp-docs-content-tab"><span class="count">7</span> Intake</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
@@ -2049,7 +1941,8 @@
           </div>
         </div>
 
-        <header class="wp-docs-content-tab"><span class="count" id="Response">9</span> Response from Payload</header>
+        <a id="Response"></a>
+        <header class="wp-docs-content-tab"><span class="count">8</span> Response from Payload</header>
         <div class="container">
           <div class="row">
             <div class="col-6">
