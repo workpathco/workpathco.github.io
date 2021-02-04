@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="wp-docs">
+    <!-- main content-->
+    <div class="wp-docs-wrapper">
+      <!-- sidebar -->
+      <div class="wp-docs-sidebar">
+        <header class="wp-docs-sidebar-title">
+          <img src="images/logo.svg" alt="Workpath API" width="140px" />
+        </header>
+        <ul>
+          <li>
+            <i class="bi bi-star-fill wp-icon"></i>
+            <a href="#GetStarted"> Getting Started</a>
+          </li>
+          <li>
+            <i class="bi bi-key-fill wp-icon"></i>
+            <a href="#Authentication">Authentication and Keys</a>
+          </li>
+          <li>
+            <i class="bi bi-clipboard-check wp-icon"></i>
+            <a href="#Credential">Credential Management</a>
+          </li>
+          <li>
+            <i class="bi bi-person-badge wp-icon"></i>
+            <a href="#People">People</a>
+          </li>
+          <li>
+            <i class="bi bi-person-lines-fill wp-icon"></i>
+            <a href="#Patient">Patient</a>
+          </li>
+          <li>
+            <i class="bi bi-credit-card wp-icon"></i>
+            <a href="#Payment">Payment</a>
+          </li>
+          <li>
+            <i class="bi bi-file-earmark-lock2 wp-icon"></i>
+            <a href="#Insurance">Insurance</a>
+          </li>
+          <li>
+            <i class="bi bi-file-medical wp-icon"></i>
+            <a href="#Intake">Intake</a>
+          </li>
+          <li>
+            <i class="bi bi-code-square wp-icon"></i>
+            <a href="#Response">Response from Payload</a>
+          </li>
+          <li>
+            <ul>
+              <li>Important Links</li>
+              <li>
+                <i class="bi bi-link-45deg wp-icon"></i>
+                <a href="https://help.workpath.co/en/" target="blank">Platform Documentation</a>
+              </li>
+              <li>
+                <i class="bi bi-link-45deg wp-icon"></i>
+                <a href="https://www.workpath.co">Workpath Website</a>
+              </li>
+              <li>
+                <i class="bi bi-link-45deg wp-icon"></i>
+                <a href="https://www.workpath.co/start">Contact Us</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- /sidebar -->
+
+      <!-- content -->
+      <div class="wp-docs-content">
+        <header class="wp-docs-page-title">
+          <h1>Workpath Housecall API</h1>
+          <h3 class="thin secondary">The path connecting telehealth and in-home healthcare.</h3>
+        </header>
+
+        <header class="wp-docs-content-tab"><span class="count" id="GetStarted">1</span> Getting Started</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h4>Information We Need</h4>
+              <p>
+                To start the appointment process, we require a certain amount of information from you about your patient, the provider of your
+                patient, what labs you are wanting to run, and insurance information (if applicable). See the sections below about our endpoints you
+                will need in order to create a full appointment.
+              </p>
+              <p>
+                This document outlines the behaviors expected from Intake API Version 2 (V2). The Workpath REST API provides programmatic access to
+                Workpath data for use in client applications and partner integrations. This is a working document as we continue to update our API.
+              </p>
+              <p>
+                For general information visit this link:
+                <a href="https://www.workpath.co/api" target="blank">Workpath Intake API Overview</a>
+              </p>
+              <p>
+                Access to our Client Management Dashboard can be found
+                <a href="https://api.workpath.co" target="blank">here</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Authentication">2</span> Authentication and Keys</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                Token resources provide authorized access to the API using the OAuth 2.0
+                <a href="https://tools.ietf.org/html/rfc6749#section-4.3" target="blank"> password credential grant type flow </a>. Applications with
+                a valid API key+password can exchange the email+password of a Workpath user for a temporary access token. All requests to the API are
+                made in the context of an authenticated user via an access token.
+              </p>
+              <p>User resources provide authentication and config settings for individual users.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h2>Authorization Code</h2>
+              <p>
+                The authorization code grant type is initiated from your client application. A URL will be constructed with specific parameters and
+                navigated to, where the user will then sign in to Workpath. After a successful sign in, the user will authorize your application to
+                access their information and then be redirected back to your client. The redirection URL will include a code that can be exchanged for
+                an access token.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Authorization Code Initiation</h4>
+              <p>
+                This step will be initiated by your application. Your application will generate and store the required attributes which it can later
+                reference when the request is sent back to your redirect URI. It will need to generate two random strings, one for the state and one
+                for the code_verifier. Workpath will send the state back with the code to your redirect URI, so make sure your application saves the
+                code verifier that can be referenced by the state later on.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <p><code>GET https://api.workpath.co/oauth/authorize</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>API Credential key associated with client generated <a href="http://api.workpath.co" target="blank">here</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">redirect_uri</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Redirect URL associated with client generated <a href="http://api.workpath.co" target="blank">here</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Randomly generated string.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code_challenge</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>SHA-256 and base64 encoded version of the code verifier.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code_challenge_method</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Always use <code>S256</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">response_type</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Always use <code>code</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">onboarding</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Used to show themed login page. Use <code>0</code> to disable onboarding view.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Request JSON</h5>
+              <pre>
+                <code>
+  {
+    "client_id": "3680ba42-822d-44db-8a5c-9d5ce35b639e",
+    "redirect_uri": "https://url.com",
+    "state": "iOTxFAXD7dYdsKhR9hGa",
+    "code_challenge": "ZDU3N2VhZjJiYjRiY2QzZTg3M2NhNmVhZDUzYTQ4Nj...",
+    "code_challenge_method": "S256",
+    "response_type": "code",
+    "onboarding": "1"
+  }
+                </code>
+              </pre>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <h2>Token Exchange</h2>
+              <h4>Authorization Code Grant Type</h4>
+              <p>
+                This step will take place once the request is sent back to your redirect URI. Two parameters will be available as query parameters,
+                code and state. Use the state parameter to access the correct code verifier which will be used in the code exchanged request, as
+                outlined in the attributes section of these instructions.
+              </p>
+              <p>
+                Alternatively, if anything went wrong during authorization, an error_type and error_description will be sent as query params to allow
+                your application to show the error accordingly.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <p><code>POST https://api.workpath.co/oauth/token</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">grant_type</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>OAuth grant type. Value should be <code>authorization_code</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Code sent back as query param in redirect URI.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code_verifier</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>String referenced by state sent back as query param in redirect URI.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">code_challenge_method</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Always use <code>S256</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>API Credential key associated with client generated <a href="https://api.workpath.co" target="blank">here</a>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">redirect_uri</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Redirect URL associated with client generated <a href="https://api.workpath.co" target="blank">here</a>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Request JSON</h5>
+              <pre>
+                <code>
+  {
+    "grant_type": "authorization_code",
+    "code": "blIbZ1d~3j@7W*N2prkc",
+    "code_verifier": "IotXfaxd7DyDSkHr9HgA",
+    "code_challenge_method": "S256",
+    "client_id": "3680ba42-822d-44db-8a5c-9d5ce35b639e",
+    "redirect_uri": "https://url.com"
+  }
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">access_token</code> <code>string</code></p>
+                    </td>
+                    <td>Token value.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">expires_in</code> <code>string</code></p>
+                    </td>
+                    <td>Seconds to expiration of the token.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">access_token_expires_at</code> <code>string</code></p>
+                    </td>
+                    <td>Expiration time stamp.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">scope</code> <code>string</code></p>
+                    </td>
+                    <td>Space-separated list of scopes.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">token_type</code> <code>string</code></p>
+                    </td>
+                    <td>Token type.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "access_token": "035736ac-abb5-49b9-a08d-c83d09398ba1",
+    "expires_in": 1800,
+    "access_token_expires_at": "2016-12-04T16:05:49.401Z",
+    "scope": "",
+    "token_type": "Bearer"
+  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Client Credential Grant Type</h4>
+              <p>
+                Issue a new access token. Requests can include an HTTP Basic authorization header representing a valid API key and password or
+                <code>client_id</code> and <code>client_secret</code> as attributes in the request body.
+              </p>
+              <p>
+                Basic Auth Example: <code>Authorization: Basic [value]</code>, where the value is the base-64 encoded representation of
+                '[api-key]:[api-password]'.
+              </p>
+              <p>
+                The access token returned by this method is used as the bearer token for all subsequent requests to the API in the form of an auth
+                header (<code>Authorization: Bearer [access token]</code>). Subsequent requests made using an expired or invalid token will return a
+                <code>401 - Unauthorized</code> response code.
+              </p>
+              <p>
+                <strong>Note:</strong> the content encoding for this endpoint is 'application/x-www-form-urlencoded', unlike the 'application/json'
+                used by all other API methods.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <p><code>POST https://api.workpath.co/oauth/authorize</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">grant_type</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>OAuth grant type. Value should be <code>authorization_code</code>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                    </td>
+                    <td>API Key provided by Workpath. Not needed with BasicAuth.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_secret</code> <code>string</code></p>
+                    </td>
+                    <td>API Password provided by Workpath. Not needed with BasicAuth.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Request JSON</h5>
+              <pre>
+                <code>
+  {
+    "grant_type": "client_credentials",
+    "client_id": "4ab41347-e24f-475d-b1da-bce37ae31af3",
+    "client_secret": "SX0LGy6z!Pa~,V-!A:az"
+  }
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">access_token</code> <code>string</code></p>
+                    </td>
+                    <td>Token value.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">expires_in</code> <code>string</code></p>
+                    </td>
+                    <td>Seconds to expiration of the token.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">access_token_expires_at</code> <code>string</code></p>
+                    </td>
+                    <td>Expiration time stamp.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">scope</code> <code>string</code></p>
+                    </td>
+                    <td>Space-separated list of scopes.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">token_type</code> <code>string</code></p>
+                    </td>
+                    <td>Token type.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "access_token": "035736ac-abb5-49b9-a08d-c83d09398ba1",
+    "expires_in": 1800,
+    "access_token_expires_at": "2016-12-04T16:05:49.401Z",
+    "scope": "",
+    "token_type": "Bearer"
+  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Credential">3</span> Credential Management</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2>API Credentials</h2>
+              <p>
+                All API credential requests require a BasicAuth header by using a previously created API credential. The provided BasicAuth header
+                will then be used to determine if the request is allowed based on the API credential being accessed, only API credentials with the
+                same associated client will work with each other. For API credential creation, the associated BasicAuth credential provided in the
+                request will be used to create another API credential associated with the same client. Cross-client access is not allowed and will
+                result in an unauthorized response.
+              </p>
+            </div>
+            <div class="col-6"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <h4>Create API Credentials</h4>
+              <p><code>POST https://api.workpath.co/api-keys</code></p>
+              <p>Adds a new API Credential (limit 2 for each client).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                    </td>
+                    <td>API Key ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">key</code> <code>string</code></p>
+                    </td>
+                    <td>API Key.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                    </td>
+                    <td>Associated client ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">is_active</code> <code>boolean</code></p>
+                    </td>
+                    <td>Flag that indicates whether the API credential is active.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_login_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was last used.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">created_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was created.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">updated_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was last updated.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">secret</code> <code>string</code></p>
+                    </td>
+                    <td>API key password.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "id": 1001,
+    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+    "is_active": false,
+    "last_login_at": "2016-12-06T15:50:49.402Z",
+    "created_at": "2016-12-06T15:50:49.402Z",
+    "updated_at": "2016-12-06T15:50:49.402Z",
+    "secret": "SX0LGy6z!Pa~,V-!A:az"
+  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Retrieve API Credential</h4>
+              <p>Retrieve details for an API Credential.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Parameters</h5>
+              <p><code>GET https://api.workpath.co/api-keys/[id OR key]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                      <p class="small">optional if <code>key</code> is used</p>
+                    </td>
+                    <td>ID of the API Credential being requested.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">key</code> <code>string</code></p>
+                      <p class="small">optional if <code>id</code> is used</p>
+                    </td>
+                    <td>Key of API Credential being requested.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                    </td>
+                    <td>API Key ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">key</code> <code>string</code></p>
+                    </td>
+                    <td>API Key.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                    </td>
+                    <td>Associated client ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">is_active</code> <code>boolean</code></p>
+                    </td>
+                    <td>Flag that indicates whether the API credential is active.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_login_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was last used.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">created_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was created.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">updated_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was last updated.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">secret</code> <code>string</code></p>
+                    </td>
+                    <td>API key password.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "id": 1001,
+    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+    "is_active": false,
+    "last_login_at": "2016-12-06T15:50:49.402Z",
+    "created_at": "2016-12-06T15:50:49.402Z",
+    "updated_at": "2016-12-06T15:50:49.402Z"
+  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Retrieve API Credential List</h4>
+              <p><code>GET https://api.workpath.co/api-keys/</code></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p>Retrieve list of API Credentials associated with authenticating client.</p>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  [
+    {
+      "id": 1001,
+      "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+      "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+      "is_active": false,
+      "last_login_at": "2016-12-06T15:50:49.402Z",
+      "created_at": "2016-12-06T15:50:49.402Z",
+      "updated_at": "2016-12-06T15:50:49.402Z"
+    },
+    {
+      "id": 1002,
+      "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+      "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+      "is_active": true,
+      "last_login_at": "2016-12-06T15:50:49.402Z",
+      "created_at": "2016-12-06T15:50:49.402Z",
+      "updated_at": "2016-12-06T15:50:49.402Z"
+    },
+    ...   
+  ]
+                                
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Update API Credential</h4>
+              <p>Modifies an individual API Credential.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Parameters</h5>
+              <p><code>PUT https://api.workpath.co/api-keys/[key]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">key</code> <code>string</code></p>
+                      <p class="small">optional</p>
+                    </td>
+                    <td>Key of the API Credential being updated.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <p><code>PUT https://api.workpath.co/api-keys/[key]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">is_active</code> <code>string</code></p>
+                    </td>
+                    <td>Updates active status.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                    </td>
+                    <td>API Key ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">key</code> <code>string</code></p>
+                    </td>
+                    <td>API Key.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">client_id</code> <code>string</code></p>
+                    </td>
+                    <td>Associated client ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">is_active</code> <code>boolean</code></p>
+                    </td>
+                    <td>Flag that indicates whether the API credential is active.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_login_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was last used.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">created_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was created.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">updated_at</code> <code>string</code></p>
+                    </td>
+                    <td>Indicates when the API credential was last updated.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">secret</code> <code>string</code></p>
+                    </td>
+                    <td>API key password.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "id": 1001,
+    "key": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+    "client_id": "c2b869e9-2013-4435-9eb9-837b0dc7937d",
+    "is_active": false,
+    "last_login_at": "2016-12-06T15:50:49.402Z",
+    "created_at": "2016-12-06T15:50:49.402Z",
+    "updated_at": "2016-12-06T15:50:49.402Z"
+  }                  
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Delete API Credential</h4>
+              <p>Deletes a Device in a User.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Parameters</h5>
+              <p><code>DELETE https://api.workpath.co/api-keys/[key]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">key</code> <code>string</code></p>
+                      <p class="small">optional</p>
+                    </td>
+                    <td>Key of the API Credential being deleted.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="People">4</span> People</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2>Create, Update, Retrieve, Delete People</h2>
+              <p>
+                These are the endpoints you will need to hit in order to create a Guarantor, and an Insured Person for the Insurance Object later on.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Create A Person</h4>
+              <p>Create a new person.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <p><code>POST https://api.workpath.co/people</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Person's first name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Person's last name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">gender</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Gender of the Person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Person's date of birth.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The Person's phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
+                      “+18045551234”.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Person's email address.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">photo_url</code> <code>string</code></p>
+                    </td>
+                    <td>A link to the Person's profile picture if applicable.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">addresses</code> <code>array</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      <p class="cell">An array of address objects. Each address object should have the following fields:</p>
+                      <table class="table table-light table-sm table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
+                            </td>
+                            <td>The patient’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">city</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s city.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s state.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s zip code.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">country</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s country.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                            </td>
+                            <td>The address's phone number.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">latitude</code> <code>number</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The latitude of the address for map purposes.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">longitude</code> <code>number</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The longitude of the address for map purposes.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">timezone</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The address's timezone.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Request JSON</h5>
+              <pre>
+                <code>
+  {
+    "first_name": "Joseph",
+    "last_name": "Schmoseph",
+    "dob": "1977-06-01",
+    "gender": "female",
+    "phone": "+17183211234",
+    "email": "testguy@example.com",
+    "photo_url": "https://example.com/pic.png",
+    "addresses": [
+      {
+        "id": 1001,
+        "label": "Home",
+        "street": "123 Fourth St",
+        "street2": "Suite 101",
+        "city": "Richmond",
+        "state": "Virginia",
+        "zip": "10001",
+        "country": "US",
+        "phone": "+17183211234",
+        "latitude": 37.5407246,
+        "longitude": -77.4360481,
+        "timezone": "America/New_York"
+      }
+    ]
+  }                                
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Update A Person</h4>
+              <p>Modify a person.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <p><code>PUT https://api.workpath.co/people/[id]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Person's first name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Person's last name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">gender</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Gender of the Person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Person's date of birth.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The Person's phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
+                      “+18045551234”.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Person's email address.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">photo_url</code> <code>string</code></p>
+                    </td>
+                    <td>A link to the Person's profile picture if applicable.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Request JSON</h5>
+              <pre>
+                <code>
+  {
+    "first_name": "Joseph",
+    "last_name": "Schmoseph",
+    "dob": "1977-06-01",
+    "gender": "female",
+    "phone": "+17183211234",
+    "email": "testguy@example.com",
+    "photo_url": "https://example.com/pic.png"
+  }                                
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                    </td>
+                    <td>The ID of the created person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                    </td>
+                    <td>Person's first name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                    </td>
+                    <td>Person's last name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">gender</code> <code>string</code></p>
+                    </td>
+                    <td>Gender of the Person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                    </td>
+                    <td>The Person's date of birth.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                    </td>
+                    <td>
+                      The Person's phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
+                      “+18045551234”.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                    </td>
+                    <td>The Person's email address.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">photo_url</code> <code>string</code></p>
+                    </td>
+                    <td>A link to the Person's profile picture if applicable.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">addresses</code> <code>array</code></p>
+                    </td>
+                    <td>An array of address objects attached to the person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">tags</code> <code>array</code></p>
+                      <p class="small">optional</p>
+                    </td>
+                    <td>An array of tag objects attached to the person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">documents</code> <code>array</code></p>
+                      <p class="small">optional</p>
+                    </td>
+                    <td>An array of document objects attached to the person.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "id": 1001,
+    "name": "Joseph Schmoseph",
+    "dob": "1977-06-01",
+    "gender": "female",
+    "phone": "+17183211234",
+    "email": "testguy@example.com",
+    "photo_url": "https://example.com/pic.png",
+    "addresses": [
+      {
+        "id": 1001,
+        "label": "Home",
+        "street": "123 Fourth St",
+        "street2": "Suite 101",
+        "city": "Richmond",
+        "state": "Virginia",
+        "zip": "10001",
+        "country": "US",
+        "phone": "+17183211234",
+        "latitude": 37.5407246,
+        "longitude": -77.4360481,
+        "timezone": "America/New_York"
+      }
+    ],
+    "tags": [
+      {
+        "id": 1001,
+        "name": "Centrifuge",
+        "color": "#FF0000",
+        "description": "Lorem ipsum dolor sit amet",
+        "locked": false,
+        "alert": false,
+        "organization_id": null
+      }
+    ],
+    "documents": [
+      {
+        "id": 1001,
+        "name": "Certification",
+        "url": "https://example.com/certification"
+      }
+    ]
+  }                               
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Retrieve Person</h4>
+              <p>Retrieve details for a person.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Parameters</h5>
+              <p><code>GET https://api.workpath.co/people/[id]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>ID of the Person being requested.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Response Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                    </td>
+                    <td>The ID of the created person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                    </td>
+                    <td>Person's first name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                    </td>
+                    <td>Person's last name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">gender</code> <code>string</code></p>
+                    </td>
+                    <td>Gender of the Person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                    </td>
+                    <td>The Person's date of birth.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                    </td>
+                    <td>
+                      The Person's phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
+                      “+18045551234”.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                    </td>
+                    <td>The Person's email address.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">photo_url</code> <code>string</code></p>
+                    </td>
+                    <td>A link to the Person's profile picture if applicable.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">addresses</code> <code>array</code></p>
+                    </td>
+                    <td>An array of address objects attached to the person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">tags</code> <code>array</code></p>
+                      <p class="small">optional</p>
+                    </td>
+                    <td>An array of tag objects attached to the person.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">documents</code> <code>array</code></p>
+                      <p class="small">optional</p>
+                    </td>
+                    <td>An array of document objects attached to the person.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Response JSON</h5>
+              <pre>
+                <code>
+  {
+    "id": 1001,
+    "name": "Joseph Schmoseph",
+    "dob": "1977-06-01",
+    "gender": "female",
+    "phone": "+17183211234",
+    "email": "testguy@example.com",
+    "photo_url": "https://example.com/pic.png",
+    "addresses": [
+      {
+        "id": 1001,
+        "label": "Home",
+        "street": "123 Fourth St",
+        "street2": "Suite 101",
+        "city": "Richmond",
+        "state": "Virginia",
+        "zip": "10001",
+        "country": "US",
+        "phone": "+17183211234",
+        "latitude": 37.5407246,
+        "longitude": -77.4360481,
+        "timezone": "America/New_York"
+      }
+    ],
+    "tags": [
+      {
+        "id": 1001,
+        "name": "Centrifuge",
+        "color": "#FF0000",
+        "description": "Lorem ipsum dolor sit amet",
+        "locked": false,
+        "alert": false,
+        "organization_id": null
+      }
+    ],
+    "documents": [
+      {
+        "id": 1001,
+        "name": "Certification",
+        "url": "https://example.com/certification"
+      }
+    ]
+  }                               
+                </code>
+              </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Delete Person</h4>
+              <p>Deletes a Person.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Parameters</h5>
+              <p><code>DELETE https://api.workpath.co/people/[id]</code></p>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>string</code></p>
+                    </td>
+                    <td>ID of the person being deleted.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Patient">5</span> Patient</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2>Patient Object</h2>
+              <p>
+                Required information regarding your patient that needs to be sent to us. We will follow up with your patient and make sure that all
+                the information is correct.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Patient's first name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">middle_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Patient's middle name or initial name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Patient's last name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The biological sex of the patient. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
+                      Unknown.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">custom_id</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Unique patient identifier.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The patient’s date of birth.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">phone_number</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      The patient’s phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
+                      “+18045551234”.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The patient’s email address.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">opt_out_messaging</code> <code>boolean</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Whether or not the patient would like to receive messages from our system.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">address</code> <code>object</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      <p class="cell">The patient's address fields.</p>
+                      <table class="table table-light table-sm table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">city</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s city.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s state.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s zip code.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">country</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s country.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Patient JSON</h5>
+              <pre>
+                <code>
+  {
+    "first_name": "",
+    "last_name": "",
+    "biological_sex": "",
+    "custom_id": "",
+    "date_of_birth": "",
+    "phone_number": "",
+    "email": "",
+    "address": {
+      "street": "",
+      "street2": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": "",
+    }
+  }                                
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Payment">6</span> Payment</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2>Payment Object</h2>
+              <p>
+                If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">person_id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Patient's created Workpath ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">insurance_details_id</code> <code>number</code></p>
+                      <p class="small">optional if patient is self-pay</p>
+                    </td>
+                    <td>Workpath ID for created insurance details.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">payment_type</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>This will be either patient insurance or self-pay.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Payment JSON</h5>
+              <pre>
+                <code>
+  {
+    "person_id": 0,
+    "insurance_details_id": 0,
+    "payment_type": ""
+  }                                 
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Insurance">7</span> Insurance Information</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2>Insurance Object</h2>
+              <p>
+                If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
+                This information is only needed if your patient has insurance that they will be using to pay for the requested labs/tests.
+              </p>
+              <p>
+                It is important to note that in order to have a <code>guarantor_id</code> and an <code>insured_person_id</code>, you must create those
+                people by using the <a href="#People">people endpoint</a>.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">person_id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Workpath ID of the created Patient.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">company_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Name of Patient's Insurance Company.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">company_address</code> <code>object</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      <p class="cell">Address of the patient’s insurance company.</p>
+                      <table class="table table-light table-sm table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The insurance company’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The insurance company’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">city</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The insurance company’s city.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The insurance company’s state.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The insurance company’s zip code.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">country</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The insurance company’s country.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">company_phone</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Patient’s insurance company phone number including country code. “+18045551234”</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">group_number</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Group number for patient’s insurance policy.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">relationship</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The relationship of the patient to the policy holder.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">policy_number</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The policy number for the patient’s insurance policy.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">guarantor_id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Guarantor Person's created Workpath ID. (see <a href="#People">People</a>)</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">insured_person_id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>The Insured Person's created Workpath ID. (see <a href="#People">People</a>)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Insurance JSON</h5>
+              <pre>
+                <code>
+  {
+    "person_id": 0, 
+    "company_name": "",
+    "company_address": {
+      "street": "",
+      "street2": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": "",
+    },
+    "company_phone": "",
+    "group_number": "",
+    "relationship": "",
+    "policy_number": "",
+    "guarantor_id": 0, // person.id
+    "insured_person_id": 0 // person.id
+  }                                
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Intake">8</span> Intake</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <h2>Intake Object</h2>
+              <p>
+                The intake object contains all of the information about the provider ordering the tests or labs as well as what specific tests or labs
+                need to be run. We ask for multiple unique identifiers.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h5>Request Attributes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Intake ID.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">provider_first_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Doctor or prescribing entity’s first name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">provider_last_name</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Doctor or prescribing entity’s last name.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">provider_npi</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Doctor or prescribing entity’s unique identifier. This should be exactly 10 characters.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">patient_id</code> <code>number</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Unique patient identifier.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">insurance_supported</code> <code>boolean</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Is insurance supported?</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">patientpay_supported</code> <code>boolean</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Is patient pay supported?</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">clientpay_supported</code> <code>string</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Is client pay supported?</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">payment_method</code> <code>object</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      <p class="cell">Patient's selected payment method.</p>
+                      <table class="table table-light table-sm table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">insurance_details_id</code> <code>number</code></p>
+                              <p class="small">optional if self-pay</p>
+                            </td>
+                            <td>ID of insuarnce information created.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">payment_type</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>Payment type.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">intake_diagnosis_codes</code> <code>object</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      <p class="cell">An array of code objects for services needed.</p>
+                      <table class="table table-light table-sm table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">icd10_code</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>ICD10 Code.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">services</code> <code>array</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>Services attached to / needed by the ICD10 code requested.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">services</code> <code>array</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>Services attached to / needed by the ICD10 code requested.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="cell"><code class="attribute">address</code> <code>object</code></p>
+                      <p class="small">required</p>
+                    </td>
+                    <td>
+                      <p class="cell">The patient's address fields.</p>
+                      <table class="table table-light table-sm table-borderless">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s street address.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">city</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s city.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s state.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s zip code.</td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p class="cell"><code class="attribute">country</code> <code>string</code></p>
+                              <p class="small">required</p>
+                            </td>
+                            <td>The patient’s country.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-6">
+              <h5>Example Intake JSON</h5>
+              <pre>
+                <code>
+  {
+    "id": 0,
+    "provider_first_name": "",
+    "provider_last_name": "",
+    "provider_npi": "",
+    "patient_id": 0,
+    "insurance_supported": true,
+    "patientpay_supported": true,
+    "clientpay_supported": true,
+    "payment_method": {
+      "insurance_details_id": 0,
+      "payment_type": ""
+    },
+    "intake_diagnosis_codes": [{
+      "icd10_code": "",
+      "services": [0]
+    }],
+    "services": [0],
+    "address": {
+      "street": "",
+      "street2": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": "",
+    }
+  }                                    
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <header class="wp-docs-content-tab"><span class="count" id="Response">9</span> Response from Payload</header>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <p>
+                Once we receive your payload, a unique Workpath request ID will be created and sent back to you in the response. You should expect to
+                see a JSON response similar to the following:
+              </p>
+              <pre>
+                <code>
+  {
+    "request_id": 12345
+  }                  
+                </code>
+              </pre>
+              <p>
+                If your request comes back to you with a status of anything other than 200 - OK, please refer to the sections below for more detailed
+                information regarding error codes and validation messages.
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <h4>Error Codes / Messaging</h4>
+              <p>
+                In the situation where you receive an error code in the response from us, you should receive a message describing the error in more
+                detail. An example of an error would be invalid credentials or a missing field. Listed below are error codes and messages that you
+                could receive from us. Please note that these are only error messages from the Workpath API. Generic error codes are listed at the end
+                of this document for your reference.
+              </p>
+            </div>
+            <div class="col-6">
+              <h5>HTTP Error Codes from Workpath</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>400 Bad Request</td>
+                    <td>[FIELD NAME] missing from payload.</td>
+                  </tr>
+                  <tr>
+                    <td>403 Forbidden</td>
+                    <td>Invalid credentials.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <h4>Validation / Messaging</h4>
+              <p>
+                There are certain fields that need to be formatted in a given way in order to be processed correctly. If one of these fields is not in
+                the correct format, you will receive a validation message from us stating one of the following things:
+              </p>
+            </div>
+            <div class="col-6">
+              <h5>Error Codes with Validation Messages from Workpath</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>ERROR</td>
+                    <td>Patient DOB needs to be in the format MMDDYYYY.</td>
+                  </tr>
+                  <tr>
+                    <td>ERROR</td>
+                    <td>[Patient] Phone Number needs to include the country code.</td>
+                  </tr>
+                  <tr>
+                    <td>ERROR</td>
+                    <td>Invalid option selection for biological sex of patient.</td>
+                  </tr>
+                  <tr>
+                    <td>ERROR</td>
+                    <td>Name needs to be sent as First Name and Last Name, [Last Name] is missing.</td>
+                  </tr>
+                  <tr>
+                    <td>ERROR</td>
+                    <td>^ cannot be used as a delimiter in payload.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <h4>Standard Errors (Auth Errors, etc.)</h4>
+              <p>Below is a standard HTTP code summary for your convenience. We use conventional HTTP response codes most like other APIs.</p>
+            </div>
+            <div class="col-6">
+              <h5>Standard HTTP Error Codes</h5>
+              <table class="table table-light table-sm table-borderless">
+                <tbody>
+                  <tr>
+                    <td>200 - OK</td>
+                    <td>Good to go!</td>
+                  </tr>
+                  <tr>
+                    <td>400 - Bad Request</td>
+                    <td>The request was not correct - see Error Codes and Messages for details.</td>
+                  </tr>
+                  <tr>
+                    <td>401 - Unauthorized</td>
+                    <td>Invalid credentials</td>
+                  </tr>
+                  <tr>
+                    <td>402 - Request Failed</td>
+                    <td>Parameters were valid but the request failed.</td>
+                  </tr>
+                  <tr>
+                    <td>403 - Forbidden</td>
+                    <td>Invalid permissions attached to credentials.</td>
+                  </tr>
+                  <tr>
+                    <td>404 - Not Found</td>
+                    <td>Resource requested does not exist.</td>
+                  </tr>
+                  <tr>
+                    <td>409 - Conflict</td>
+                    <td>The request conflicts with another request.</td>
+                  </tr>
+                  <tr>
+                    <td>429 - Too Many Requests</td>
+                    <td>Too many requests hit the API at one time.</td>
+                  </tr>
+                  <tr>
+                    <td>500, 502, 503, 504 - Server Errors</td>
+                    <td>Something went wrong on Workpath’s end.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
