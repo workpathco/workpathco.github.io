@@ -1208,7 +1208,7 @@
               </table>
             </div>
             <div class="col-6">
-              <h5>Example Request JSON</h5>
+              <h5>Example Response JSON</h5>
               <pre>
                 <code>
   {
@@ -1361,7 +1361,7 @@
               </table>
             </div>
             <div class="col-6">
-              <h5>Example Request JSON</h5>
+              <h5>Example Response JSON</h5>
               <pre>
                 <code>
   {
@@ -1835,7 +1835,6 @@
           <div class="row">
             <div class="col-6">
               <h5>Request Attributes</h5>
-              <p><code>POST https://api.workpath.co/intake</code> NOT SURE IF THIS IS RIGHT</p>
               <table class="table table-light table-sm table-borderless">
                 <tbody>
                   <tr>
@@ -1850,55 +1849,49 @@
                       <p class="cell"><code class="attribute">provider_first_name</code> <code>string</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>Patient's first name.</td>
+                    <td>Doctor or prescribing entity’s first name.</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">provider_last_name</code> <code>string</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>Patient's last name.</td>
+                    <td>Doctor or prescribing entity’s last name.</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">provider_npi</code> <code>string</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>
-                      The biological sex of the patient. The following are accepted options: Ambiguous, Female, Male, Not Applicable, Other, or
-                      Unknown.
-                    </td>
+                    <td>Doctor or prescribing entity’s unique identifier. This should be exactly 10 characters.</td>
                   </tr>
                   <tr>
                     <td>
-                      <p class="cell"><code class="attribute">patient_id</code> <code>string</code></p>
+                      <p class="cell"><code class="attribute">patient_id</code> <code>number</code></p>
                       <p class="small">required</p>
                     </td>
                     <td>Unique patient identifier.</td>
                   </tr>
                   <tr>
                     <td>
-                      <p class="cell"><code class="attribute">insurance_supported</code> <code>string</code></p>
+                      <p class="cell"><code class="attribute">insurance_supported</code> <code>boolean</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>The patient’s date of birth.</td>
+                    <td>Is insurance supported?</td>
                   </tr>
                   <tr>
                     <td>
-                      <p class="cell"><code class="attribute">patientpay_supported</code> <code>string</code></p>
+                      <p class="cell"><code class="attribute">patientpay_supported</code> <code>boolean</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>
-                      The patient’s phone number. Please include the country code. For example, “8045551234” will not be accepted - please format as
-                      “+18045551234”.
-                    </td>
+                    <td>Is patient pay supported?</td>
                   </tr>
                   <tr>
                     <td>
                       <p class="cell"><code class="attribute">clientpay_supported</code> <code>string</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>The patient’s email address.</td>
+                    <td>Is client pay supported?</td>
                   </tr>
                   <tr>
                     <td>
@@ -1906,22 +1899,22 @@
                       <p class="small">required</p>
                     </td>
                     <td>
-                      <p class="cell">Pateint's selected payment method.</p>
+                      <p class="cell">Patient's selected payment method.</p>
                       <table class="table table-light table-sm table-borderless">
                         <tbody>
                           <tr>
                             <td>
-                              <p class="cell"><code class="attribute">insurance_details_id</code> <code>string</code></p>
-                              <p class="small">required</p>
+                              <p class="cell"><code class="attribute">insurance_details_id</code> <code>number</code></p>
+                              <p class="small">optional if self-pay</p>
                             </td>
-                            <td>The patient’s street address.</td>
+                            <td>ID of insuarnce information created.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">payment_type</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s street address.</td>
+                            <td>Payment type.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -1933,7 +1926,7 @@
                       <p class="small">required</p>
                     </td>
                     <td>
-                      <p class="cell">Pateint's selected payment method.</p>
+                      <p class="cell">An array of code objects for services needed.</p>
                       <table class="table table-light table-sm table-borderless">
                         <tbody>
                           <tr>
@@ -1941,14 +1934,14 @@
                               <p class="cell"><code class="attribute">icd10_code</code> <code>string</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s street address.</td>
+                            <td>ICD10 Code.</td>
                           </tr>
                           <tr>
                             <td>
                               <p class="cell"><code class="attribute">services</code> <code>array</code></p>
                               <p class="small">required</p>
                             </td>
-                            <td>The patient’s street address.</td>
+                            <td>Services attached to / needed by the ICD10 code requested.</td>
                           </tr>
                         </tbody>
                       </table>
@@ -1959,7 +1952,7 @@
                       <p class="cell"><code class="attribute">services</code> <code>array</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>The patient’s street address.</td>
+                    <td>Services attached to / needed by the ICD10 code requested.</td>
                   </tr>
                   <tr>
                     <td>
