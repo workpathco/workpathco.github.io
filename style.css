@@ -178,35 +178,6 @@ code.attribute {
   font-weight: 300;
   /* background-image: linear-gradient(#f79d69, #e1735c); */
 }
-.wp-docs-content-tab .anchor {
-  display: inline;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  margin-left: 8px;
-  margin-top: -12px;
-}
-.wp-docs-content-tab .anchor img {
-  width: 16px;
-  height: 16px;
-  transition: opacity 0.2s ease-in-out;
-  opacity: 0;
-}
-.wp-docs-content-tab:hover .anchor img {
-  opacity: 1;
-}
-
-/* flexbox
------------------------------------------------*/
-
-.columns {
-  display: flex;
-  flex-direction: column nowrap;
-}
-.column {
-  flex: 50%;
-  padding: 0 1rem 1rem 0;
-}
 
 /* utils
 -----------------------------------------------*/
@@ -257,30 +228,6 @@ code.attribute {
   margin-right: 8px;
   margin-bottom: -4px;
   color: #4c81c9;
-}
-.wp-icon.a {
-  background: url("./images/icons.svg") 0 0 no-repeat;
-}
-.wp-icon.b {
-  background: url("./images/icons.svg") -16px 0 no-repeat;
-}
-.wp-icon.c {
-  background: url("./images/icons.svg") -32px 0 no-repeat;
-}
-.wp-icon.d {
-  background: url("./images/icons.svg") -48px 0 no-repeat;
-}
-.wp-icon.e {
-  background: url("./images/icons.svg") -64px 0 no-repeat;
-}
-.wp-icon.f {
-  background: url("./images/icons.svg") -80px 0 no-repeat;
-}
-.wp-icon.g {
-  background: url("./images/icons.svg") -96px 0 no-repeat;
-}
-.wp-icon.h {
-  background: url("./images/icons.svg") -112px 0 no-repeat;
 }
 
 /* responsive
