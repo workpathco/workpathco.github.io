@@ -91,6 +91,10 @@ code.attribute {
   background: #f8f9fa;
 }
 
+.search-found {
+  background: #ebebeb;
+}
+
 /* main
 -----------------------------------------------*/
 
