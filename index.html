@@ -55,18 +55,16 @@
           <img src="images/logo.svg" alt="Workpath API" width="140px" />
         </header>
         <ul class="menu">
-          <form class="d-flex" id="searchForm" style="padding-bottom: 10px;">
+          <form class="d-flex" id="searchForm" style="padding-bottom: 10px">
             <input class="form-control me-2" placeholder="Search" aria-label="Search" id="searchItem" />
             <button class="btn btn-sm btn-outline-primary" onclick="search();">
               <i class="bi bi-search wp-icon"></i>
             </button>
           </form>
           <li>
-            <i class="bi bi-star-fill wp-icon"></i>
-            <a href="#GetStarted"> Getting Started</a>
+            <a href="#GetStarted"><i class="bi bi-star-fill wp-icon"></i> Getting Started</a>
           </li>
-          <li class="activado">
-            
+          <li class="">
             <a href="#Authentication"><i class="bi bi-key-fill wp-icon"></i> Authentication and Keys</a>
             <ul>
               <li><a href="#AuthorizationCode">Authorization Code</a></li>
@@ -74,8 +72,7 @@
             </ul>
           </li>
           <li class="">
-            <i class="bi bi-clipboard-check wp-icon"></i>
-            <a href="#Credential">Credential Management</a>
+            <a href="#Credential"><i class="bi bi-clipboard-check wp-icon"></i> Credential Management</a>
             <ul>
               <li><a href="#CreateApiCredential">Create API Credential</a></li>
               <li><a href="#RetrieveApiCredential">Retrieve API Credential</a></li>
@@ -85,8 +82,7 @@
             </ul>
           </li>
           <li class="">
-            <i class="bi bi-person-badge wp-icon"></i>
-            <a href="#People">People</a>
+            <a href="#People"><i class="bi bi-person-badge wp-icon"></i> People</a>
             <ul>
               <li><a href="#CreatePerson">Create</a></li>
               <li><a href="#RetrievePerson">Retrieve One</a></li>
@@ -95,20 +91,16 @@
             </ul>
           </li>
           <li>
-            <i class="bi bi-credit-card wp-icon"></i>
-            <a href="#Payment">Payment</a>
+            <a href="#Payment"><i class="bi bi-credit-card wp-icon"></i> Payment</a>
           </li>
           <li>
-            <i class="bi bi-file-earmark-lock2 wp-icon"></i>
-            <a href="#Insurance">Insurance</a>
+            <a href="#Insurance"><i class="bi bi-file-earmark-lock2 wp-icon"></i> Insurance</a>
           </li>
           <li>
-            <i class="bi bi-file-medical wp-icon"></i>
-            <a href="#Intake">Intake</a>
+            <a href="#Intake"><i class="bi bi-file-medical wp-icon"></i> Intake</a>
           </li>
           <li class="">
-            <i class="bi bi-code-square wp-icon"></i>
-            <a href="#Response">Response from Payload</a>
+            <a href="#Response"><i class="bi bi-code-square wp-icon"></i> Response from Payload</a>
             <ul>
               <li><a href="#ErrorCodes">Error Codes</a></li>
               <li><a href="#Validation">Validation</a></li>
@@ -116,22 +108,15 @@
             </ul>
           </li>
           <hr />
+          <li>Important Links</li>
           <li>
-            <li>Important Links</li>
-            <ul>
-              <li>
-                <i class="bi bi-link-45deg wp-icon"></i>
-                <a href="https://help.workpath.co/en/" target="blank">Platform Documentation</a>
-              </li>
-              <li>
-                <i class="bi bi-link-45deg wp-icon"></i>
-                <a href="https://www.workpath.co">Workpath Website</a>
-              </li>
-              <li>
-                <i class="bi bi-link-45deg wp-icon"></i>
-                <a href="https://www.workpath.co/start">Contact Us</a>
-              </li>
-            </ul>
+            <a href="https://help.workpath.co/en/" target="blank"><i class="bi bi-link-45deg wp-icon"></i> Platform Documentation</a>
+          </li>
+          <li>
+            <a href="https://www.workpath.co"><i class="bi bi-link-45deg wp-icon"></i> Workpath Website</a>
+          </li>
+          <li>
+            <a href="https://www.workpath.co/start"><i class="bi bi-link-45deg wp-icon"></i> Contact Us</a>
           </li>
         </ul>
       </div>
@@ -174,6 +159,7 @@
         <a id="Authentication"></a>
         <header class="wp-docs-content-tab"><span class="count">2</span> Authentication and Keys</header>
         <div class="container">
+          <a id="AuthorizationCode"></a>
           <div class="row">
             <div class="col-6">
               <p>User resources provide authentication and config settings for individual users.</p>
@@ -181,7 +167,6 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <a id="AuthorizationCode"></a>
               <h2>Authorization Code</h2>
               <p>
                 The authorization code grant type is initiated from your client application. A URL will be constructed with specific parameters and
@@ -268,12 +253,12 @@
   }
                 </code>
               </pre>
+              <a id="TokenExchange"></a>
             </div>
           </div>
 
           <div class="row">
             <div class="col-6">
-              <a id="TokenExchange"></a>
               <h2>Token Exchange</h2>
               <h4>Authorization Code Grant Type</h4>
               <p>
@@ -539,8 +524,8 @@
                 result in an unauthorized response.
               </p>
             </div>
-            <div class="col-6"></div>
           </div>
+          <a id="CreateApiCredential"></a>
 
           <div class="row">
             <div class="col-6">
@@ -626,6 +611,7 @@
   }                  
                 </code>
               </pre>
+              <a id="RetrieveApiCredential"></a>
             </div>
           </div>
           <div class="row">
@@ -723,6 +709,7 @@
   }                  
                 </code>
               </pre>
+              <a id="RetrieveApiCredentialList"></a>
             </div>
           </div>
           <div class="row">
@@ -763,6 +750,7 @@
                                 
                 </code>
               </pre>
+              <a id="UpdateApiCredential"></a>
             </div>
           </div>
           <div class="row">
@@ -875,6 +863,7 @@
   }                  
                 </code>
               </pre>
+              <a id="DeleteApiCredential"></a>
             </div>
           </div>
           <div class="row">
