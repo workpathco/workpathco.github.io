@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Alike&family=Roboto&display=swap");
-@import url("./sidebar-accordion.css");
 
 :root {
   --font-scale: 12px;
@@ -95,6 +94,20 @@ code.attribute {
   background: #ebebeb;
 }
 
+img {
+  /* filter: invert(58%) sepia(20%) saturate(1474%) hue-rotate(322deg) brightness(92%) contrast(91%); Dark Orange */
+  /* filter: invert(25%) sepia(28%) saturate(44%) hue-rotate(320deg) brightness(89%) contrast(89%); Dark Gray */
+  filter: invert(22%) sepia(10%) saturate(1993%) hue-rotate(188deg) brightness(95%) contrast(87%);
+}
+
+.btn-outline-primary {
+  border-color: #4c81c9 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #37405b !important;
+}
+
 /* main
 -----------------------------------------------*/
 
@@ -139,6 +152,29 @@ code.attribute {
 }
 .wp-docs-sidebar-title img {
   display: block;
+}
+.menu {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.menu li a {
+  display: block;
+  padding-left: 5px;
+}
+.menu li a:hover {
+  background: #ebebeb;
+}
+
+.menu ul {
+  display: none;
+}
+
+.menu .activado > a {
+  background: #ebebeb;
 }
 
 /* Content
@@ -199,8 +235,8 @@ code.attribute {
   width: 24px;
   height: 24px;
   border-radius: 100px;
-  background-color: #37405b;
-  color: var(--color-tertiary);
+  background-color: #e8e8e8;
+  color: var(--color-primary);
   font-size: 14px;
   line-height: 24px;
   margin-right: 0.6rem;
