@@ -14,3 +14,12 @@
 //     }
 //   }
 // }
+
+function changeClassName(nav) {
+  var newNavTab = document.getElementById(nav);
+  if (newNavTab.className === "hidden") {
+    newNavTab.className = "selected";
+  } else {
+    newNavTab.className = "hidden";
+  }
+}

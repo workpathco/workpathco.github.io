@@ -52,7 +52,9 @@
       <!-- sidebar -->
       <div class="wp-docs-sidebar">
         <header class="wp-docs-sidebar-title">
-          <img src="images/logo.svg" alt="Workpath API" width="140px" />
+          <a href="#Top">
+            <img src="images/logo.svg" alt="Workpath API" width="140px" />
+          </a>
         </header>
         <ul class="menu">
           <form class="d-flex" id="searchForm" style="padding-bottom: 10px">
@@ -64,16 +66,18 @@
           <li>
             <a href="#GetStarted"><i class="bi bi-star-fill wp-icon"></i> Getting Started</a>
           </li>
-          <li class="">
-            <a href="#Authentication"><i class="bi bi-key-fill wp-icon"></i> Authentication and Keys</a>
-            <ul>
+          <li>
+            <span onclick="changeClassName('hidden-1')"><i class="bi bi-key-fill wp-icon"></i> Authentication and Keys</span>
+            <ul class="hidden" id="hidden-1">
+              <li><a href="#Authentication">Authentication Top</a></li>
               <li><a href="#AuthorizationCode">Authorization Code</a></li>
               <li><a href="#TokenExchange">Token Exchange</a></li>
             </ul>
           </li>
-          <li class="">
-            <a href="#Credential"><i class="bi bi-clipboard-check wp-icon"></i> Credential Management</a>
-            <ul>
+          <li>
+            <span onclick="changeClassName('hidden-2')"><i class="bi bi-clipboard-check wp-icon"></i> Credential Management</span>
+            <ul class="hidden" id="hidden-2">
+              <li><a href="#Credential">Credential Top</a></li>
               <li><a href="#CreateApiCredential">Create API Credential</a></li>
               <li><a href="#RetrieveApiCredential">Retrieve API Credential</a></li>
               <li><a href="#RetrieveApiCredentialList">Retrieve API Credential List</a></li>
@@ -81,13 +85,14 @@
               <li><a href="#DeleteApiCredential">Delete API Credential</a></li>
             </ul>
           </li>
-          <li class="">
-            <a href="#People"><i class="bi bi-person-badge wp-icon"></i> People</a>
-            <ul>
-              <li><a href="#CreatePerson">Create</a></li>
-              <li><a href="#RetrievePerson">Retrieve One</a></li>
-              <li><a href="#UpdatePerson">Update</a></li>
-              <li><a href="#DeletePerson">Delete</a></li>
+          <li>
+            <span onclick="changeClassName('hidden-3')"><i class="bi bi-person-badge wp-icon"></i> People</span>
+            <ul class="hidden" id="hidden-3">
+              <li><a href="#People">People Top</a></li>
+              <li><a href="#CreatePerson">Create A Person</a></li>
+              <li><a href="#UpdatePerson">Update A Person</a></li>
+              <li><a href="#RetrievePerson">Retrieve A Person</a></li>
+              <li><a href="#DeletePerson">Delete A Person</a></li>
             </ul>
           </li>
           <li>
@@ -99,9 +104,10 @@
           <li>
             <a href="#Intake"><i class="bi bi-file-medical wp-icon"></i> Intake</a>
           </li>
-          <li class="">
-            <a href="#Response"><i class="bi bi-code-square wp-icon"></i> Response from Payload</a>
-            <ul>
+          <li>
+            <span onclick="changeClassName('hidden-4')"><i class="bi bi-code-square wp-icon"></i> Response from Payload</span>
+            <ul class="hidden" id="hidden-4">
+              <li><a href="#Response">Responses Top</a></li>
               <li><a href="#ErrorCodes">Error Codes</a></li>
               <li><a href="#Validation">Validation</a></li>
               <li><a href="#StandardErrors">Standard Errors</a></li>
@@ -110,13 +116,13 @@
           <hr />
           <li>Important Links</li>
           <li>
-            <a href="https://help.workpath.co/en/" target="blank"><i class="bi bi-link-45deg wp-icon"></i> Platform Documentation</a>
-          </li>
-          <li>
             <a href="https://www.workpath.co"><i class="bi bi-link-45deg wp-icon"></i> Workpath Website</a>
           </li>
           <li>
             <a href="https://www.workpath.co/start"><i class="bi bi-link-45deg wp-icon"></i> Contact Us</a>
+          </li>
+          <li>
+            <a href="https://help.workpath.co/en/" target="blank"><i class="bi bi-link-45deg wp-icon"></i> Help Center</a>
           </li>
         </ul>
       </div>
@@ -124,6 +130,7 @@
 
       <!-- content -->
       <div class="wp-docs-content">
+        <a id="Top"></a>
         <header class="wp-docs-page-title">
           <h1>Workpath Housecall API</h1>
           <h3 class="thin secondary">The path connecting telehealth and in-home healthcare.</h3>
@@ -242,7 +249,6 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="TokenExchange"></a>
             </div>
             <div class="col-6">
               <h5>Example Request JSON</h5>
@@ -259,6 +265,7 @@
   }
                 </code>
               </pre>
+              <a id="TokenExchange"></a>
             </div>
           </div>
 
@@ -523,6 +530,7 @@
         <a id="Credential"></a>
         <header class="wp-docs-content-tab"><span class="count">3</span> Credential Management</header>
         <div class="container">
+          <a id="CreateApiCredential"></a>
           <div class="row">
             <div class="col-6">
               <h2>API Credentials</h2>
@@ -535,7 +543,6 @@
               </p>
             </div>
           </div>
-          <a id="CreateApiCredential"></a>
 
           <div class="row">
             <div class="col-6">
@@ -604,6 +611,7 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="RetrieveApiCredential"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -621,7 +629,6 @@
   }                  
                 </code>
               </pre>
-              <a id="RetrieveApiCredential"></a>
             </div>
           </div>
           <div class="row">
@@ -703,6 +710,7 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="RetrieveApiCredentialList"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -719,7 +727,6 @@
   }                  
                 </code>
               </pre>
-              <a id="RetrieveApiCredentialList"></a>
             </div>
           </div>
           <div class="row">
@@ -765,6 +772,7 @@
           </div>
           <div class="row">
             <div class="col-6">
+              <br />
               <h4>Update API Credential</h4>
               <p>Modifies an individual API Credential.</p>
             </div>
@@ -857,6 +865,7 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="DeleteApiCredential"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -873,7 +882,6 @@
   }                  
                 </code>
               </pre>
-              <a id="DeleteApiCredential"></a>
             </div>
           </div>
           <div class="row">
@@ -909,6 +917,7 @@
         <a id="People"></a>
         <header class="wp-docs-content-tab"><span class="count">4</span> People</header>
         <div class="container">
+          <a id="CreatePerson"></a>
           <div class="row">
             <div class="col-6">
               <h2>Create, Update, Retrieve, Delete People</h2>
@@ -1080,6 +1089,8 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="UpdatePerson"></a>
+              <br />
             </div>
             <div class="col-6">
               <h5>Example Request JSON</h5>
@@ -1363,6 +1374,8 @@
   }                               
                 </code>
               </pre>
+              <a id="RetrievePerson"></a>
+              <br />
             </div>
           </div>
           <div class="row">
@@ -1534,6 +1547,8 @@
   }                               
                 </code>
               </pre>
+              <a id="DeletePerson"></a>
+              <br />
             </div>
           </div>
           <div class="row">
@@ -2048,6 +2063,8 @@
                 information regarding error codes and validation messages.
               </p>
             </div>
+            <a id="ErrorCodes"></a>
+            <br />
           </div>
 
           <div class="row">
@@ -2074,6 +2091,8 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="Validation"></a>
+              <br />
             </div>
           </div>
 
@@ -2111,6 +2130,8 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="StandardErrors"></a>
+              <br />
             </div>
           </div>
 
@@ -2172,7 +2193,7 @@
       </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
