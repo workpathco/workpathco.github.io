@@ -13,14 +13,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
     document.documentElement.setAttribute("data-theme", switchToTheme);
     if (switchToTheme === "dark") {
       switchButtons.innerHTML =
-        "<span class='badge rounded-pill bg-warning' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-brightness-high-fill'></i></span>";
-      switchLogos.innerHTML =
-        "<a href='#Top'><img src='images/workpath_logo_dark.png' alt='Workpath API' width='180px' style='padding-bottom: 10px' /></a>";
+        "<span class='badge rounded-pill bg-warning float-end' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-brightness-high-fill'></i></span>";
+      switchLogos.innerHTML = "<a href='#Top'><img src='images/workpath_logo_dark.png' alt='Workpath API' width='180px' /></a>";
     } else {
       switchButtons.innerHTML =
-        "<span class='badge rounded-pill bg-dark' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-moon'></i></span>";
-      switchLogos.innerHTML =
-        "<a href='#Top'><img src='images/workpath_logo.png' alt='Workpath API' width='180px' style='padding-bottom: 10px' /></a>";
+        "<span class='badge rounded-pill bg-dark float-end' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-moon'></i></span>";
+      switchLogos.innerHTML = "<a href='#Top'><img src='images/workpath_logo.png' alt='Workpath API' width='180px' /></a>";
     }
   };
 });
@@ -34,13 +32,12 @@ function lightDarkMode() {
   document.documentElement.setAttribute("data-theme", switchToTheme);
   if (switchToTheme === "dark") {
     switchButtons.innerHTML =
-      "<span class='badge rounded-pill bg-warning' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-brightness-high-fill'></i></span>";
-    switchLogos.innerHTML =
-      "<a href='#Top'><img src='images/workpath_logo_dark.png' alt='Workpath API' width='180px' style='padding-bottom: 10px' /></a>";
+      "<span class='badge rounded-pill bg-warning float-end' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-brightness-high-fill'></i></span>";
+    switchLogos.innerHTML = "<a href='#Top'><img src='images/workpath_logo_dark.png' alt='Workpath API' width='180px' /></a>";
   } else {
     switchButtons.innerHTML =
-      "<span class='badge rounded-pill bg-dark' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-moon'></i></span>";
-    switchLogos.innerHTML = "<a href='#Top'><img src='images/workpath_logo.png' alt='Workpath API' width='180px' style='padding-bottom: 10px' /></a>";
+      "<span class='badge rounded-pill bg-dark float-end' id='theme-switcher' onclick='lightDarkMode();'><i class='bi bi-moon'></i></span>";
+    switchLogos.innerHTML = "<a href='#Top'><img src='images/workpath_logo.png' alt='Workpath API' width='180px' /></a>";
   }
 }
 

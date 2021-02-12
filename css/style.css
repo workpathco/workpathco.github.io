@@ -9,7 +9,9 @@
   --inline-code-color: #4c81c9;
   /* --border-color: #d5d5d5; */
   --border-color: #e8e8e8;
-  --circle-background-color: linear-gradient(#4c81c9, #37405b);
+  --circle-background-color: #4c81c9;
+  --icon-color: #4c81c9;
+  --background-color: #fff;
 }
 
 [data-theme="dark"] {
@@ -17,6 +19,7 @@
   --text-color: #e8e8e8;
   --border-color: #4b5a63;
   --circle-background-color: linear-gradient(#f79d69, #e1735c);
+  --icon-color: #f79d69;
 }
 
 body * {
@@ -213,7 +216,7 @@ ul {
   position: sticky;
   top: 0;
   background-color: var(--background-color);
-  /* border-bottom: 1px solid var(--border-color); */
+  border-bottom: 1px solid var(--border-color);
   border-top: 1px solid var(--border-color);
   font-weight: bold;
   font-size: 24px;
@@ -271,6 +274,10 @@ ul {
   color: var(--text-color) !important;
 }
 
+.bg-dark {
+  background-color: #4c81c9 !important;
+}
+
 /* icons
 -----------------------------------------------*/
 .wp-icon {
@@ -279,5 +286,5 @@ ul {
   display: inline-block;
   margin-right: 8px;
   margin-bottom: -4px;
-  color: #4c81c9;
+  color: var(--icon-color);
 }
