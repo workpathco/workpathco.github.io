@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <!-- Google Tag Manager -->
     <script>
@@ -25,7 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:image" content="./images/meta_image.png" />
-    <!--Not sure if this is right or not.-->
+    <!--Not sure if this image meta tag is right or not.-->
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
@@ -52,17 +52,22 @@
       <!-- sidebar -->
       <div class="wp-docs-sidebar">
         <header class="wp-docs-sidebar-title">
-          <a href="#Top">
-            <img src="images/workpath_logo.png" alt="Workpath API" width="200px" style="padding-bottom: 10px" />
-          </a>
+          <div id="themeLogo">
+            <a href="#Top">
+              <img src="images/workpath_logo.png" alt="Workpath API" width="180px" style="padding-bottom: 10px" />
+            </a>
+          </div>
+          <div id="themeButton">
+            <span class="badge rounded-pill bg-dark" id="theme-switcher" onclick="lightDarkMode();"><i class="bi bi-moon"></i></span>
+          </div>
         </header>
         <ul class="menu">
-          <form class="d-flex" id="searchForm" style="padding-bottom: 10px">
+          <!-- <form class="d-flex" id="searchForm" style="padding-bottom: 10px">
             <input class="form-control me-2" placeholder="Search" aria-label="Search" id="searchItem" />
             <button class="btn btn-sm btn-outline-primary" id="searchButton">
               <i class="bi bi-search"></i>
             </button>
-          </form>
+          </form> -->
           <li>
             <a href="#GetStarted"><i class="bi bi-star-fill wp-icon"></i> Getting Started</a>
           </li>
@@ -2193,7 +2198,6 @@
       </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
@@ -2201,8 +2205,5 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <script src="./js/app.js"></script>
-    <script>
-      hljs.initHighlightingOnLoad();
-    </script>
   </body>
 </html>
