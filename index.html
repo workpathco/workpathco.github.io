@@ -1,6 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PN3XBGB");
+    </script>
+    <!-- End Google Tag Manager -->
+
     <title>Workpath API</title>
     <meta
       name="description"
@@ -9,6 +24,12 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:image" content="./images/meta_image.png" />
+    <!--Not sure if this image meta tag is right or not.-->
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
+
     <!-- CSS only -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
@@ -17,73 +38,110 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="wp-docs">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN3XBGB" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- main content-->
     <div class="wp-docs-wrapper">
       <!-- sidebar -->
       <div class="wp-docs-sidebar">
         <header class="wp-docs-sidebar-title">
-          <img src="images/logo.svg" alt="Workpath API" width="140px" />
+          <div class="col" id="themeLogo">
+            <a href="#Top">
+              <img src="images/workpath_logo.png" alt="Workpath API" width="180px" />
+            </a>
+          </div>
+          <div class="col" id="themeButton">
+            <span class="badge rounded-pill bg-dark float-end" id="theme-switcher" onclick="lightDarkMode();"><i class="bi bi-moon"></i></span>
+          </div>
+          <!-- <div id="themeLogo">
+            
+          </div>
+          <div id="themeButton" style="justify-content: right">
+            
+          </div> -->
         </header>
-        <ul>
+        <ul class="menu">
+          <!-- <form class="d-flex" id="searchForm" style="padding-bottom: 10px">
+            <input class="form-control me-2" placeholder="Search" aria-label="Search" id="searchItem" />
+            <button class="btn btn-sm btn-outline-primary" id="searchButton">
+              <i class="bi bi-search"></i>
+            </button>
+          </form> -->
           <li>
-            <i class="bi bi-star-fill wp-icon"></i>
-            <a href="#GetStarted"> Getting Started</a>
+            <a href="#GetStarted"><i class="bi bi-star-fill wp-icon"></i> Getting Started</a>
           </li>
           <li>
-            <i class="bi bi-key-fill wp-icon"></i>
-            <a href="#Authentication">Authentication and Keys</a>
-          </li>
-          <li>
-            <i class="bi bi-clipboard-check wp-icon"></i>
-            <a href="#Credential">Credential Management</a>
-          </li>
-          <li>
-            <i class="bi bi-person-badge wp-icon"></i>
-            <a href="#People">People</a>
-          </li>
-          <li>
-            <i class="bi bi-credit-card wp-icon"></i>
-            <a href="#Payment">Payment</a>
-          </li>
-          <li>
-            <i class="bi bi-file-earmark-lock2 wp-icon"></i>
-            <a href="#Insurance">Insurance</a>
-          </li>
-          <li>
-            <i class="bi bi-file-medical wp-icon"></i>
-            <a href="#Intake">Intake</a>
-          </li>
-          <li>
-            <i class="bi bi-code-square wp-icon"></i>
-            <a href="#Response">Response from Payload</a>
-          </li>
-          <li>
-            <ul>
-              <li>Important Links</li>
-              <li>
-                <i class="bi bi-link-45deg wp-icon"></i>
-                <a href="https://help.workpath.co/en/" target="blank">Platform Documentation</a>
-              </li>
-              <li>
-                <i class="bi bi-link-45deg wp-icon"></i>
-                <a href="https://www.workpath.co">Workpath Website</a>
-              </li>
-              <li>
-                <i class="bi bi-link-45deg wp-icon"></i>
-                <a href="https://www.workpath.co/start">Contact Us</a>
-              </li>
+            <span onclick="changeClassName('hidden-1')"><i class="bi bi-key-fill wp-icon"></i> Authentication and Keys</span>
+            <ul class="hidden" id="hidden-1">
+              <li><a href="#Authentication">Authentication Top</a></li>
+              <li><a href="#AuthorizationCode">Authorization Code</a></li>
+              <li><a href="#TokenExchange">Token Exchange</a></li>
             </ul>
+          </li>
+          <li>
+            <span onclick="changeClassName('hidden-2')"><i class="bi bi-clipboard-check wp-icon"></i> Credential Management</span>
+            <ul class="hidden" id="hidden-2">
+              <li><a href="#Credential">Credential Top</a></li>
+              <li><a href="#CreateApiCredential">Create API Credential</a></li>
+              <li><a href="#RetrieveApiCredential">Retrieve API Credential</a></li>
+              <li><a href="#RetrieveApiCredentialList">Retrieve API Credential List</a></li>
+              <li><a href="#UpdateApiCredential">Update API Credential</a></li>
+              <li><a href="#DeleteApiCredential">Delete API Credential</a></li>
+            </ul>
+          </li>
+          <li>
+            <span onclick="changeClassName('hidden-3')"><i class="bi bi-person-badge wp-icon"></i> People</span>
+            <ul class="hidden" id="hidden-3">
+              <li><a href="#People">People Top</a></li>
+              <li><a href="#CreatePerson">Create A Person</a></li>
+              <li><a href="#UpdatePerson">Update A Person</a></li>
+              <li><a href="#RetrievePerson">Retrieve A Person</a></li>
+              <li><a href="#DeletePerson">Delete A Person</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#Payment"><i class="bi bi-credit-card wp-icon"></i> Payment</a>
+          </li>
+          <li>
+            <a href="#Insurance"><i class="bi bi-file-earmark-lock2 wp-icon"></i> Insurance</a>
+          </li>
+          <li>
+            <a href="#Intake"><i class="bi bi-file-medical wp-icon"></i> Intake</a>
+          </li>
+          <li>
+            <span onclick="changeClassName('hidden-4')"><i class="bi bi-code-square wp-icon"></i> Response from Payload</span>
+            <ul class="hidden" id="hidden-4">
+              <li><a href="#Response">Responses Top</a></li>
+              <li><a href="#ErrorCodes">Error Codes</a></li>
+              <li><a href="#Validation">Validation</a></li>
+              <li><a href="#StandardErrors">Standard Errors</a></li>
+            </ul>
+          </li>
+          <hr />
+          <li>Important Links</li>
+          <li>
+            <a href="https://www.workpath.co"><i class="bi bi-link-45deg wp-icon"></i> Workpath Website</a>
+          </li>
+          <li>
+            <a href="https://www.workpath.co/start"><i class="bi bi-link-45deg wp-icon"></i> Contact Us</a>
+          </li>
+          <li>
+            <a href="https://help.workpath.co/en/" target="blank"><i class="bi bi-link-45deg wp-icon"></i> Help Center</a>
           </li>
         </ul>
       </div>
-
       <!-- /sidebar -->
 
       <!-- content -->
       <div class="wp-docs-content">
+        <a id="Top"></a>
         <header class="wp-docs-page-title">
           <h1>Workpath Housecall API</h1>
           <h3 class="thin secondary">The path connecting telehealth and in-home healthcare.</h3>
@@ -94,12 +152,6 @@
         <div class="container">
           <div class="row">
             <div class="col-6">
-              <h4>Information We Need</h4>
-              <p>
-                To start the appointment process, we require a certain amount of information from you about your patient, the provider of your
-                patient, what labs you are wanting to run, and insurance information (if applicable). See the sections below about our endpoints you
-                will need in order to create a full appointment.
-              </p>
               <p>
                 This document outlines the behaviors expected from Intake API Version 2 (V2). The Workpath REST API provides programmatic access to
                 Workpath data for use in client applications and partner integrations. This is a working document as we continue to update our API.
@@ -108,10 +160,21 @@
                 For general information visit this link:
                 <a href="https://www.workpath.co/api" target="blank">Workpath Intake API Overview</a>
               </p>
+              <h4>Information We Need</h4>
+              <p>
+                To start the appointment process, we require a certain amount of information from you about your patient, the provider of your
+                patient, what labs you are wanting to run, and insurance information (if applicable). See the sections below about our endpoints you
+                will need in order to create a full appointment.
+              </p>
               <p>
                 Access to our Client Management Dashboard can be found
                 <a href="https://api.workpath.co/clients" target="blank">here</a>.
               </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
             </div>
           </div>
         </div>
@@ -119,6 +182,7 @@
         <a id="Authentication"></a>
         <header class="wp-docs-content-tab"><span class="count">2</span> Authentication and Keys</header>
         <div class="container">
+          <a id="AuthorizationCode"></a>
           <div class="row">
             <div class="col-6">
               <p>User resources provide authentication and config settings for individual users.</p>
@@ -150,7 +214,7 @@
             <div class="col-6">
               <h5>Request Attributes</h5>
               <p><code>GET https://api.workpath.co/oauth/authorize</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -212,6 +276,7 @@
   }
                 </code>
               </pre>
+              <a id="TokenExchange"></a>
             </div>
           </div>
 
@@ -234,7 +299,7 @@
             <div class="col-6">
               <h5>Request Attributes</h5>
               <p><code>POST https://api.workpath.co/oauth/token</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -300,7 +365,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -376,7 +441,7 @@
             <div class="col-6">
               <h5>Request Attributes</h5>
               <p><code>POST https://api.workpath.co/oauth/authorize</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -416,7 +481,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -466,11 +531,17 @@
               </pre>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+            </div>
+          </div>
         </div>
 
         <a id="Credential"></a>
         <header class="wp-docs-content-tab"><span class="count">3</span> Credential Management</header>
         <div class="container">
+          <a id="CreateApiCredential"></a>
           <div class="row">
             <div class="col-6">
               <h2>API Credentials</h2>
@@ -482,7 +553,6 @@
                 result in an unauthorized response.
               </p>
             </div>
-            <div class="col-6"></div>
           </div>
 
           <div class="row">
@@ -500,7 +570,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -552,6 +622,7 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="RetrieveApiCredential"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -581,7 +652,7 @@
             <div class="col-6">
               <h5>Request Parameters</h5>
               <p><code>GET https://api.workpath.co/api-keys/[id OR key]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -604,7 +675,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -650,6 +721,7 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="RetrieveApiCredentialList"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -706,10 +778,12 @@
                                 
                 </code>
               </pre>
+              <a id="UpdateApiCredential"></a>
             </div>
           </div>
           <div class="row">
             <div class="col-6">
+              <br />
               <h4>Update API Credential</h4>
               <p>Modifies an individual API Credential.</p>
             </div>
@@ -718,7 +792,7 @@
             <div class="col-6">
               <h5>Parameters</h5>
               <p><code>PUT https://api.workpath.co/api-keys/[key]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -735,7 +809,7 @@
             <div class="col-6">
               <h5>Request Attributes</h5>
               <p><code>PUT https://api.workpath.co/api-keys/[key]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -750,7 +824,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -802,6 +876,7 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="DeleteApiCredential"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -830,7 +905,7 @@
             <div class="col-6">
               <h5>Parameters</h5>
               <p><code>DELETE https://api.workpath.co/api-keys/[key]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -843,11 +918,17 @@
               </table>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+            </div>
+          </div>
         </div>
 
         <a id="People"></a>
         <header class="wp-docs-content-tab"><span class="count">4</span> People</header>
         <div class="container">
+          <a id="CreatePerson"></a>
           <div class="row">
             <div class="col-6">
               <h2>Create, Update, Retrieve, Delete People</h2>
@@ -867,7 +948,7 @@
             <div class="col-6">
               <h5>Request Attributes</h5>
               <p><code>POST https://api.workpath.co/people</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -943,7 +1024,7 @@
                     </td>
                     <td>
                       <p class="cell">An array of address objects. Each address object should have the following fields:</p>
-                      <table class="table table-light table-sm table-borderless">
+                      <table class="table table-sm table-borderless">
                         <tbody>
                           <tr>
                             <td>
@@ -1019,6 +1100,8 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="UpdatePerson"></a>
+              <br />
             </div>
             <div class="col-6">
               <h5>Example Request JSON</h5>
@@ -1065,7 +1148,7 @@
             <div class="col-6">
               <h5>Request Attributes</h5>
               <p><code>PUT https://api.workpath.co/people/[id]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1159,7 +1242,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1302,6 +1385,8 @@
   }                               
                 </code>
               </pre>
+              <a id="RetrievePerson"></a>
+              <br />
             </div>
           </div>
           <div class="row">
@@ -1314,7 +1399,7 @@
             <div class="col-6">
               <h5>Request Parameters</h5>
               <p><code>GET https://api.workpath.co/people/[id]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1330,7 +1415,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Response Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1473,6 +1558,8 @@
   }                               
                 </code>
               </pre>
+              <a id="DeletePerson"></a>
+              <br />
             </div>
           </div>
           <div class="row">
@@ -1485,7 +1572,7 @@
             <div class="col-6">
               <h5>Parameters</h5>
               <p><code>DELETE https://api.workpath.co/people/[id]</code></p>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1495,6 +1582,11 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
             </div>
           </div>
         </div>
@@ -1513,7 +1605,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Request Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1552,6 +1644,11 @@
               </pre>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+            </div>
+          </div>
         </div>
 
         <a id="Insurance"></a>
@@ -1573,7 +1670,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Request Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1596,7 +1693,7 @@
                     </td>
                     <td>
                       <p class="cell">Address of the patient’s insurance company.</p>
-                      <table class="table table-light table-sm table-borderless">
+                      <table class="table table-sm table-borderless">
                         <tbody>
                           <tr>
                             <td>
@@ -1715,6 +1812,11 @@
               </pre>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+            </div>
+          </div>
         </div>
 
         <a id="Intake"></a>
@@ -1732,7 +1834,7 @@
           <div class="row">
             <div class="col-6">
               <h5>Request Attributes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>
@@ -1797,7 +1899,7 @@
                     </td>
                     <td>
                       <p class="cell">Patient's selected payment method.</p>
-                      <table class="table table-light table-sm table-borderless">
+                      <table class="table table-sm table-borderless">
                         <tbody>
                           <tr>
                             <td>
@@ -1824,7 +1926,7 @@
                     </td>
                     <td>
                       <p class="cell">An array of code objects for services needed.</p>
-                      <table class="table table-light table-sm table-borderless">
+                      <table class="table table-sm table-borderless">
                         <tbody>
                           <tr>
                             <td>
@@ -1858,7 +1960,7 @@
                     </td>
                     <td>
                       <p class="cell">The patient's address fields.</p>
-                      <table class="table table-light table-sm table-borderless">
+                      <table class="table table-sm table-borderless">
                         <tbody>
                           <tr>
                             <td>
@@ -1944,6 +2046,11 @@
               </pre>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+            </div>
+          </div>
         </div>
 
         <a id="Response"></a>
@@ -1967,6 +2074,8 @@
                 information regarding error codes and validation messages.
               </p>
             </div>
+            <a id="ErrorCodes"></a>
+            <br />
           </div>
 
           <div class="row">
@@ -1981,7 +2090,7 @@
             </div>
             <div class="col-6">
               <h5>HTTP Error Codes from Workpath</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>400 Bad Request</td>
@@ -1993,6 +2102,8 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="Validation"></a>
+              <br />
             </div>
           </div>
 
@@ -2006,7 +2117,7 @@
             </div>
             <div class="col-6">
               <h5>Error Codes with Validation Messages from Workpath</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>ERROR</td>
@@ -2030,6 +2141,8 @@
                   </tr>
                 </tbody>
               </table>
+              <a id="StandardErrors"></a>
+              <br />
             </div>
           </div>
 
@@ -2040,7 +2153,7 @@
             </div>
             <div class="col-6">
               <h5>Standard HTTP Error Codes</h5>
-              <table class="table table-light table-sm table-borderless">
+              <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
                     <td>200 - OK</td>
@@ -2082,6 +2195,11 @@
               </table>
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2091,5 +2209,7 @@
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
