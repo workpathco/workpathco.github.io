@@ -7,11 +7,11 @@
   --color-secondary: #e1735c;
   --color-tertiary: #e8e8e8;
   --inline-code-color: #4c81c9;
-  /* --border-color: #d5d5d5; */
   --border-color: #e8e8e8;
   --circle-background-color: #4c81c9;
   --icon-color: #4c81c9;
   --background-color: #fff;
+  --code-blocks: #f8f9fa;
 }
 
 [data-theme="dark"] {
@@ -20,6 +20,8 @@
   --border-color: #4b5a63;
   --circle-background-color: linear-gradient(#f79d69, #e1735c);
   --icon-color: #f79d69;
+  --code-blocks: #4b536b;
+  --color-tertiary: #4b536b;
 }
 
 body * {
@@ -87,6 +89,7 @@ li {
 }
 p.small {
   font-size: 0.8rem;
+  color: var(--text-color);
 }
 p.cell {
   margin: 0;
@@ -99,7 +102,7 @@ p.cell {
 
 td {
   font-size: 15px;
-  color: #4e566d;
+  /* color: #4e566d; */
 }
 
 a {
@@ -110,16 +113,37 @@ code {
 }
 
 code.attribute {
-  color: var(--color-primary);
+  color: var(--text-color);
   font-weight: bold;
 }
 
 .hljs {
-  background: #f8f9fa;
+  background: var(--code-blocks);
+}
+
+.json {
+  color: var(--text-color);
+}
+
+.hljs-attr {
+  color: var(--text-color);
+}
+
+.hljs-string {
+  color: var(--color-secondary);
+}
+
+.hljs-number {
+  color: var(--inline-code-color);
 }
 
 .search-found {
   background: #ebebeb;
+}
+
+.table {
+  color: var(--text-color);
+  background: var(--code-blocks) !important;
 }
 
 /* main
@@ -180,7 +204,7 @@ ul {
   padding-left: 5px;
 }
 .menu li a:hover {
-  background: #ebebeb;
+  background: var(--color-tertiary);
 }
 .menu li span {
   display: block;
@@ -188,7 +212,7 @@ ul {
   cursor: pointer;
 }
 .menu li span:hover {
-  background: #ebebeb;
+  background: var(--color-tertiary);
 }
 
 /* Content
@@ -221,7 +245,6 @@ ul {
   font-weight: bold;
   font-size: 24px;
   font-weight: 300;
-  /* background-image: linear-gradient(#f79d69, #e1735c); */
 }
 
 /* utils
@@ -238,7 +261,6 @@ ul {
 
 .secondary {
   color: #e1735c;
-  /* color: #4c81c9; */
 }
 
 .thin {
