@@ -59,12 +59,6 @@
           <div class="col" id="themeButton">
             <span class="badge rounded-pill bg-dark float-end" id="theme-switcher" onclick="lightDarkMode();"><i class="bi bi-moon"></i></span>
           </div>
-          <!-- <div id="themeLogo">
-            
-          </div>
-          <div id="themeButton" style="justify-content: right">
-            
-          </div> -->
         </header>
         <ul class="menu">
           <!-- <form class="d-flex" id="searchForm" style="padding-bottom: 10px">
@@ -143,12 +137,17 @@
         <a id="Top"></a>
         <header class="wp-docs-page-title">
           <h1>Workpath Housecall API</h1>
-          <h3 class="thin secondary">The path connecting telehealth and in-home healthcare.</h3>
+          <h3 style="color: #e1735c; font-weight: 300;">The path connecting telehealth and in-home healthcare.</h3>
         </header>
 
         <a id="GetStarted"></a>
-        <header class="wp-docs-content-tab"><span class="count">1</span> Getting Started</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1>Getting Started</h1>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <p>
@@ -179,17 +178,27 @@
         </div>
 
         <a id="Authentication"></a>
-        <header class="wp-docs-content-tab"><span class="count">2</span> Authentication and Keys</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
-          <a id="AuthorizationCode"></a>
+          <div class="row">
+            <div class="col">
+              <h1>Authentication and Keys</h1>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <p>User resources provide authentication and config settings for individual users.</p>
             </div>
           </div>
           <div class="row">
+            <div class="col">
+              <a id="AuthorizationCode"></a>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-6">
-              <h2>Authorization Code</h2>
+              <h3>Authorization Code</h3>
               <p>
                 The authorization code grant type is initiated from your client application. A URL will be constructed with specific parameters and
                 navigated to, where the user will then sign in to Workpath. After a successful sign in, the user will authorize your application to
@@ -275,10 +284,15 @@
   }
                 </code>
               </pre>
-              <a id="TokenExchange"></a>
             </div>
           </div>
 
+          <div class="row">
+            <div class="col">
+              <a id="TokenExchange"></a>
+              <hr>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <h2>Token Exchange</h2>
@@ -538,12 +552,15 @@
         </div>
 
         <a id="Credential"></a>
-        <header class="wp-docs-content-tab"><span class="count">3</span> Credential Management</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
-          <a id="CreateApiCredential"></a>
+          <div class="row">
+            <div class="col">
+              <h1>Credential Management (API Credentials)</h1>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
-              <h2>API Credentials</h2>
               <p>
                 All API credential requests require a BasicAuth header by using a previously created API credential. The provided BasicAuth header
                 will then be used to determine if the request is allowed based on the API credential being accessed, only API credentials with the
@@ -554,6 +571,12 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col">
+              <a id="CreateApiCredential"></a>
+              <hr>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <h4>Create API Credentials</h4>
@@ -621,7 +644,6 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="RetrieveApiCredential"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -639,6 +661,12 @@
   }                  
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a id="RetrieveApiCredential"></a>
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -720,7 +748,6 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="RetrieveApiCredentialList"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -737,6 +764,12 @@
   }                  
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a id="RetrieveApiCredentialList"></a>
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -777,7 +810,12 @@
                                 
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
               <a id="UpdateApiCredential"></a>
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -875,7 +913,6 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="DeleteApiCredential"></a>
             </div>
             <div class="col-6">
               <h5>Example Response JSON</h5>
@@ -892,6 +929,12 @@
   }                  
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a id="DeleteApiCredential"></a>
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -925,16 +968,25 @@
         </div>
 
         <a id="People"></a>
-        <header class="wp-docs-content-tab"><span class="count">4</span> People</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
-          <a id="CreatePerson"></a>
+          <div class="row">
+            <div class="col">
+              <h1>People</h1>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
-              <h2>Create, Update, Retrieve, Delete People</h2>
               <p>
                 These are the endpoints you will need to hit in order to create a Patient, Guarantor, and an Insured Person for the Insurance Object
                 later on.
               </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a id="CreatePerson"></a>
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -1099,8 +1151,6 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="UpdatePerson"></a>
-              <br />
             </div>
             <div class="col-6">
               <h5>Example Request JSON</h5>
@@ -1135,6 +1185,12 @@
   }                                
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <a id="UpdatePerson"></a>
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -1384,8 +1440,12 @@
   }                               
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
               <a id="RetrievePerson"></a>
-              <br />
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -1557,8 +1617,12 @@
   }                               
                 </code>
               </pre>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
               <a id="DeletePerson"></a>
-              <br />
+              <hr>
             </div>
           </div>
           <div class="row">
@@ -1591,11 +1655,15 @@
         </div>
 
         <a id="Payment"></a>
-        <header class="wp-docs-content-tab"><span class="count">5</span> Payment</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
           <div class="row">
+            <div class="col">
+              <h1>Payment Object</h1>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-6">
-              <h2>Payment Object</h2>
               <p>
                 If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
               </p>
@@ -1651,11 +1719,15 @@
         </div>
 
         <a id="Insurance"></a>
-        <header class="wp-docs-content-tab"><span class="count">6</span> Insurance Information</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
           <div class="row">
+            <div class="col">
+              <h1>Patient Insurance Information Object</h1>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-6">
-              <h2>Insurance Object</h2>
               <p>
                 If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
                 This information is only needed if your patient has insurance that they will be using to pay for the requested labs/tests.
@@ -1819,11 +1891,15 @@
         </div>
 
         <a id="Intake"></a>
-        <header class="wp-docs-content-tab"><span class="count">7</span> Intake</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
           <div class="row">
+            <div class="col">
+              <h1>Intake Object</h1>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-6">
-              <h2>Intake Object</h2>
               <p>
                 The intake object contains all of the information about the provider ordering the tests or labs as well as what specific tests or labs
                 need to be run. We ask for multiple unique identifiers.
@@ -2053,8 +2129,13 @@
         </div>
 
         <a id="Response"></a>
-        <header class="wp-docs-content-tab"><span class="count">8</span> Response from Payload</header>
+        <header class="wp-docs-content-tab"></header>
         <div class="container">
+          <div class="row">
+            <div class="col">
+              <h1>Response from Payload</h1>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <p>
@@ -2073,10 +2154,14 @@
                 information regarding error codes and validation messages.
               </p>
             </div>
-            <a id="ErrorCodes"></a>
-            <br />
           </div>
 
+          <div class="row">
+            <div class="col">
+              <a id="ErrorCodes"></a>
+              <hr>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <h4>Error Codes / Messaging</h4>
@@ -2101,11 +2186,15 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="Validation"></a>
-              <br />
             </div>
           </div>
 
+          <div class="row">
+            <div class="col">
+              <a id="Validation"></a>
+              <hr>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <h4>Validation / Messaging</h4>
@@ -2140,11 +2229,15 @@
                   </tr>
                 </tbody>
               </table>
-              <a id="StandardErrors"></a>
-              <br />
             </div>
           </div>
 
+          <div class="row">
+            <div class="col">
+              <a id="StandardErrors"></a>
+              <hr>
+            </div>
+          </div>
           <div class="row">
             <div class="col-6">
               <h4>Standard Errors (Auth Errors, etc.)</h4>
