@@ -452,8 +452,8 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <h5>Request Attributes</h5>
-              <p><code>POST https://api.workpath.co/oauth/authorize</code></p>
+              <h5>Request Parameters</h5>
+              <p><code>POST https://api.workpath.co/oauth/token</code></p>
               <table class="table table-sm table-borderless">
                 <tbody>
                   <tr>
@@ -461,7 +461,7 @@
                       <p class="cell"><code class="attribute">grant_type</code> <code>string</code></p>
                       <p class="small">required</p>
                     </td>
-                    <td>OAuth grant type. Value should be <code>authorization_code</code>.</td>
+                    <td>OAuth grant type. Value should be <code>client_credentials</code>.</td>
                   </tr>
                   <tr>
                     <td>
@@ -479,16 +479,8 @@
               </table>
             </div>
             <div class="col-6">
-              <h5>Example Request JSON</h5>
-              <pre>
-                <code>
-  {
-    "grant_type": "client_credentials",
-    "client_id": "4ab41347-e24f-475d-b1da-bce37ae31af3",
-    "client_secret": "SX0LGy6z!Pa~,V-!A:az"
-  }
-                </code>
-              </pre>
+              <h5>Example URL-Encoded String</h5>
+              <p><code>grant_type=client_credentials&client_id=4ab41347-e24f-475d-b1da-bce37ae31af3&client_secret=SX0LGy6z!Pa~%2CV-!A%3Aaz</code></p>
             </div>
           </div>
           <div class="row">
