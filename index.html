@@ -2929,6 +2929,562 @@
                     By default, only appointments with a <code>Published</code> status are visible to users. If a User is associated with an Appointment as the assigned Specialist, the creator of the appointment, or the subject of the appointment, then the appointment will be visible for all the other status values as well as <code>Published</code>.
                   </p>
                 </div>
+                <div class="col-6">
+                  <h5>Sample Appointment Response JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "id": 0,
+    "status": "Accepted",
+    "type": "Single",
+    "start_time": "2016-09-23T18:25:43.511Z",
+    "end_time": "2016-09-23T19:00:43.511Z",
+    "published_at": "2016-09-19T19:00:43.511Z",
+    "specialists_needed": 1,
+    "specialists_accepted": 0,
+    "specialist_payment": 75,
+    "alt_id": null,
+    "medical_record_number": null,
+    "parent_id": null,
+    "authorized": false,
+    "requirements_message": "Requires centrifuge",
+    "location": {
+      "id": 1001,
+      "label": "Home",
+      "street": "123 Fourth St",
+      "street2": "Suite 101",
+      "city": "Richmond",
+      "state": "Virginia",
+      "zip": "10001",
+      "country": "US",
+      "phone": "+17183211234",
+      "latitude": 37.5407246,
+      "longitude": -77.4360481,
+      "timezone": "America/New_York"
+    },
+    "originator": {
+      "id": 1001,
+      "name": "XYZ Cardiology",
+      "description": "Demo organization",
+      "phone": "+17183211234",
+      "website": "http://examplecorp.com/",
+      "logo_url": "http://example.com/logo.png",
+      "disable_claimed_status": false,
+      "disable_available_status": false,
+      "customer_contact_phone": "+17183211234",
+      "customer_contact_email": "one@example.com",
+      "merchant_id": null,
+      "customer_id": null,
+      "payment_id": null,
+      "braintree_id": null,
+      "prepayment_amount": 1000,
+      "tiered_transactions": true,
+      "users_included": 5,
+      "addl_user_charge": 49.99,
+      "management_fee": 0,
+      "organizable": "vendor",
+      "organizable_id": 1001,
+      "addresses": [
+        {
+          "id": 1001,
+          "label": "Home",
+          "street": "123 Fourth St",
+          "street2": "Suite 101",
+          "city": "Richmond",
+          "state": "Virginia",
+          "zip": "10001",
+          "country": "US",
+          "phone": "+17183211234",
+          "latitude": 37.5407246,
+          "longitude": -77.4360481,
+          "timezone": "America/New_York"
+        }
+      ],
+      "tags": [
+        {
+          "id": 1001,
+          "name": "Centrifuge",
+          "color": "#FF0000",
+          "description": "Lorem ipsum dolor sit amet",
+          "locked": false,
+          "alert": false,
+          "organization_id": null
+        }
+      ],
+      "preferences": [
+        {
+          "id": null,
+          "name": "",
+          "value": null
+        }
+      ]
+    },
+    "distributor": {
+      "id": 1001,
+      "name": "XYZ Cardiology",
+      "description": "Demo organization",
+      "phone": "+17183211234",
+      "website": "http://examplecorp.com/",
+      "logo_url": "http://example.com/logo.png",
+      "disable_claimed_status": false,
+      "disable_available_status": false,
+      "customer_contact_phone": "+17183211234",
+      "customer_contact_email": "one@example.com",
+      "merchant_id": null,
+      "customer_id": null,
+      "payment_id": null,
+      "braintree_id": null,
+      "prepayment_amount": 1000,
+      "tiered_transactions": true,
+      "users_included": 5,
+      "addl_user_charge": 49.99,
+      "management_fee": 0,
+      "organizable": "vendor",
+      "organizable_id": 1001,
+      "addresses": [
+        {
+          "id": 1001,
+          "label": "Home",
+          "street": "123 Fourth St",
+          "street2": "Suite 101",
+          "city": "Richmond",
+          "state": "Virginia",
+          "zip": "10001",
+          "country": "US",
+          "phone": "+17183211234",
+          "latitude": 37.5407246,
+          "longitude": -77.4360481,
+          "timezone": "America/New_York"
+        }
+      ],
+      "tags": [
+        {
+          "id": 1001,
+          "name": "Centrifuge",
+          "color": "#FF0000",
+          "description": "Lorem ipsum dolor sit amet",
+          "locked": false,
+          "alert": false,
+          "organization_id": null
+        }
+      ],
+      "preferences": [
+        {
+          "id": null,
+          "name": "",
+          "value": null
+        }
+      ]
+    },
+    "data": [
+      {
+        "id": 1001,
+        "value": "0123456789",
+        "label": "Shipping ID",
+        "type": "shipping"
+      }
+    ],
+    "network": [
+      {
+        "id": 1001
+      }
+    ],
+    "subject": {
+      "id": 1001,
+      "name": "Joseph Schmoseph",
+      "dob": "1977-06-01",
+      "gender": "female",
+      "phone": "+17183211234",
+      "email": "testguy@example.com",
+      "photo_url": "http://example.com/pic.png",
+      "addresses": [
+        {
+          "id": 1001,
+          "label": "Home",
+          "street": "123 Fourth St",
+          "street2": "Suite 101",
+          "city": "Richmond",
+          "state": "Virginia",
+          "zip": "10001",
+          "country": "US",
+          "phone": "+17183211234",
+          "latitude": 37.5407246,
+          "longitude": -77.4360481,
+          "timezone": "America/New_York"
+        }
+      ],
+      "tags": [
+        {
+          "id": 1001,
+          "name": "Centrifuge",
+          "color": "#FF0000",
+          "description": "Lorem ipsum dolor sit amet",
+          "locked": false,
+          "alert": false,
+          "organization_id": null
+        }
+      ],
+      "documents": [
+        {
+          "id": 1001,
+          "name": "Certification",
+          "url": "https://example.com/certification"
+        }
+      ]
+    },
+    "creator": {
+      "id": 1001,
+      "is_admin": false,
+      "email": "user@example.com",
+      "email_verified_at": "2016-09-23T18:25:43.511Z",
+      "last_login_at": "2016-09-23T18:25:43.511Z",
+      "tos_accepted_at": "2016-09-23T18:25:43.511Z",
+      "type": [
+        "Organization, Specialist"
+      ],
+      "latitude": 37.5407246,
+      "longitude": -77.4360481,
+      "gps_updated_at": null,
+      "home_radius": 60,
+      "location_radius": 60,
+      "devices": [
+        {
+          "id": "nachou9e8o0e7",
+          "type": "android",
+          "created_at": "2019-07-01T20:45:54.000Z",
+          "updated_at": "2019-07-01T20:45:54.000Z",
+          "user_id": 1001
+        }
+      ],
+      "person": {
+        "id": 1001,
+        "name": "Joseph Schmoseph",
+        "dob": "1977-06-01",
+        "gender": "female",
+        "phone": "+17183211234",
+        "email": "testguy@example.com",
+        "photo_url": "http://example.com/pic.png",
+        "addresses": [
+          {
+            "id": 1001,
+            "label": "Home",
+            "street": "123 Fourth St",
+            "street2": "Suite 101",
+            "city": "Richmond",
+            "state": "Virginia",
+            "zip": "10001",
+            "country": "US",
+            "phone": "+17183211234",
+            "latitude": 37.5407246,
+            "longitude": -77.4360481,
+            "timezone": "America/New_York"
+          }
+        ],
+        "tags": [
+          {
+            "id": 1001,
+            "name": "Centrifuge",
+            "color": "#FF0000",
+            "description": "Lorem ipsum dolor sit amet",
+            "locked": false,
+            "alert": false,
+            "organization_id": null
+          }
+        ],
+        "documents": [
+          {
+            "id": 1001,
+            "name": "Certification",
+            "url": "https://example.com/certification"
+          }
+        ]
+      },
+      "organizations": [
+        {
+          "id": 1001,
+          "name": "XYZ Cardiology",
+          "global_id": "pgsk*a08098fad",
+          "description": "Demo organization",
+          "phone": "+17183211234",
+          "website": "http://examplecorp.com/",
+          "logo_url": "http://example.com/logo.png",
+          "disable_claimed_status": false,
+          "disable_available_status": false,
+          "customer_contact_phone": "+17183211234",
+          "customer_contact_email": "one@example.com",
+          "merchant_id": null,
+          "customer_id": null,
+          "payment_id": null,
+          "braintree_id": null,
+          "prepayment_amount": 1000,
+          "tiered_transactions": true,
+          "users_included": 5,
+          "addl_user_charge": 49.99,
+          "management_fee": 0,
+          "organizable": "vendor",
+          "organizable_id": 1001,
+          "vendor": {
+            "id": 1001,
+            "default_service_fee": 100,
+            "default_specialist_percentage": 0,
+            "organization": {
+              "id": 1001,
+              "name": "XYZ Cardiology",
+              "description": "Demo organization",
+              "phone": "+17183211234",
+              "website": "http://examplecorp.com/",
+              "logo_url": "http://example.com/logo.png",
+              "disable_claimed_status": false,
+              "disable_available_status": false,
+              "customer_contact_phone": "+17183211234",
+              "customer_contact_email": "one@example.com",
+              "merchant_id": null,
+              "customer_id": null,
+              "payment_id": null,
+              "braintree_id": null,
+              "prepayment_amount": 1000,
+              "tiered_transactions": true,
+              "users_included": 5,
+              "addl_user_charge": 49.99,
+              "management_fee": 0,
+              "organizable": "vendor",
+              "organizable_id": 1001,
+              "addresses": [
+                {
+                  "id": 1001,
+                  "label": "Home",
+                  "street": "123 Fourth St",
+                  "street2": "Suite 101",
+                  "city": "Richmond",
+                  "state": "Virginia",
+                  "zip": "10001",
+                  "country": "US",
+                  "phone": "+17183211234",
+                  "latitude": 37.5407246,
+                  "longitude": -77.4360481,
+                  "timezone": "America/New_York"
+                }
+              ],
+              "tags": [
+                {
+                  "id": 1001,
+                  "name": "Centrifuge",
+                  "color": "#FF0000",
+                  "description": "Lorem ipsum dolor sit amet",
+                  "locked": false,
+                  "alert": false,
+                  "organization_id": null
+                }
+              ],
+              "preferences": [
+                {
+                  "id": null,
+                  "name": "",
+                  "value": null
+                }
+              ]
+            },
+            "services": [
+              {
+                "id": 1001,
+                "vendor": {
+                  "id": 1001
+                },
+                "name": "Blood Draw",
+                "description": "A standard blood draw",
+                "vendor_fee": 60,
+                "specialist_payment": 40,
+                "duration": 15,
+                "shippable": false,
+                "archived": false,
+                "tags": [
+                  {
+                    "id": 1001,
+                    "name": "Centrifuge",
+                    "color": "#FF0000",
+                    "description": "Lorem ipsum dolor sit amet",
+                    "locked": false,
+                    "alert": false,
+                    "organization_id": null
+                  }
+                ],
+                "steps": [
+                  {
+                    "id": 1001,
+                    "rank": 10,
+                    "title": "Package tube",
+                    "description": "Fill the tube",
+                    "address": {
+                      "label": "Home",
+                      "street": "123 Fourth St",
+                      "street2": "Suite 101",
+                      "city": "Richmond",
+                      "state": "Virginia",
+                      "zip": "10001",
+                      "country": "US",
+                      "phone": "+17183211234",
+                      "latitude": 37.5407246,
+                      "longitude": -77.4360481,
+                      "timezone": "America/New_York"
+                    },
+                    "type": "action",
+                    "stage": "pre"
+                  }
+                ]
+              }
+            ]
+          },
+          "roles": {
+            "office_user": false,
+            "mobile_user": false,
+            "orderer": false
+          },
+          "preferences": [
+            {
+              "id": null,
+              "name": "",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "specialist": {
+      "id": 1001,
+      "person": {
+        "id": 1001,
+        "name": "Joseph Schmoseph",
+        "dob": "1977-06-01",
+        "gender": "female",
+        "phone": "+17183211234",
+        "email": "testguy@example.com",
+        "photo_url": "http://example.com/pic.png",
+        "addresses": [
+          {
+            "id": 1001,
+            "label": "Home",
+            "street": "123 Fourth St",
+            "street2": "Suite 101",
+            "city": "Richmond",
+            "state": "Virginia",
+            "zip": "10001",
+            "country": "US",
+            "phone": "+17183211234",
+            "latitude": 37.5407246,
+            "longitude": -77.4360481,
+            "timezone": "America/New_York"
+          }
+        ],
+        "tags": [
+          {
+            "id": 1001,
+            "name": "Centrifuge",
+            "color": "#FF0000",
+            "description": "Lorem ipsum dolor sit amet",
+            "locked": false,
+            "alert": false,
+            "organization_id": null
+          }
+        ],
+        "documents": [
+          {
+            "id": 1001,
+            "name": "Certification",
+            "url": "https://example.com/certification"
+          }
+        ]
+      },
+      "status": "Applicant",
+      "application_score": 85,
+      "quality_rating": 50,
+      "tags": [
+        {
+          "id": 1001,
+          "name": "Centrifuge",
+          "color": "#FF0000",
+          "description": "Lorem ipsum dolor sit amet",
+          "locked": false,
+          "alert": false,
+          "organization_id": null
+        }
+      ],
+      "merchant_id `abc123`": null,
+      "payment_id `paymentabc123`": null,
+      "braintree_id `braintreeabc123`": null
+    },
+    "services": [
+      {
+        "id": 1001,
+        "vendor": {
+          "id": 1001
+        },
+        "name": "Blood Draw",
+        "description": "A standard blood draw",
+        "vendor_fee": 60,
+        "specialist_payment": 40,
+        "duration": 15,
+        "shippable": false,
+        "archived": false,
+        "tags": [
+          {
+            "id": 1001,
+            "name": "Centrifuge",
+            "color": "#FF0000",
+            "description": "Lorem ipsum dolor sit amet",
+            "locked": false,
+            "alert": false,
+            "organization_id": null
+          }
+        ],
+        "steps": [
+          {
+            "id": 1001,
+            "rank": 10,
+            "title": "Package tube",
+            "description": "Fill the tube",
+            "address": {
+              "label": "Home",
+              "street": "123 Fourth St",
+              "street2": "Suite 101",
+              "city": "Richmond",
+              "state": "Virginia",
+              "zip": "10001",
+              "country": "US",
+              "phone": "+17183211234",
+              "latitude": 37.5407246,
+              "longitude": -77.4360481,
+              "timezone": "America/New_York"
+            },
+            "type": "action",
+            "stage": "pre"
+          }
+        ]
+      }
+    ],
+    "tags": [
+      {
+        "id": 1001,
+        "name": "Centrifuge",
+        "color": "#FF0000",
+        "description": "Lorem ipsum dolor sit amet",
+        "locked": false,
+        "alert": false,
+        "organization_id": null
+      }
+    ],
+    "documents": [
+      {
+        "id": 1001,
+        "name": "Certification",
+        "url": "https://example.com/certification"
+      }
+    ],
+    "payment_status": "Pending",
+    "payment_amount": 25
+  }                    
+                    </code>
+                  </pre>
+                </div>
               </div>
               <div class="row">
                 <div class="col">
@@ -2940,7 +3496,381 @@
                 <div class="col-6">
                   <h4>Update Appointment</h4>
                   <p><code>PUT https://api.workpath.co/appointments/[id]</code></p>
-                  <p>Modifies an individual appointment. Requires appointment edit permission. **LEAVE START TIME OUT OF REQUEST**</p>
+                  <p>Modifies an individual appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">status</code> <code>string</code></p>
+                        </td>
+                        <td>Appointment status.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">type</code> <code>string</code></p>
+                        </td>
+                        <td>Type of appointment. One of 'Single','Shift'.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">published_at</code> <code>string</code></p>
+                        </td>
+                        <td>Publishing time of appointment.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">specialists_needed</code> <code>number</code></p>
+                        </td>
+                        <td>Number of Specialists needed for this appointment.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">specialist_payment</code> <code>number</code></p>
+                        </td>
+                        <td>Amount Specialist earns for this appointment.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">alt_id</code> <code>string</code></p>
+                        </td>
+                        <td>Third party ID value.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">medical_record_number</code> <code>number</code></p>
+                        </td>
+                        <td>MRN value.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">requisition_id</code> <code>string</code></p>
+                        </td>
+                        <td>Requisition ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">parent_id</code> <code>number</code></p>
+                        </td>
+                        <td>Parent ID value.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">location</code> <code>Location object</code></p>
+                        </td>
+                        <td>
+                          <p class="cell">The address for the service</p>
+                          <table class="table table-sm table-borderless">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">id</code> <code>integer</code></p>
+                                </td>
+                                <td>The Address's unique ID</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">street</code> <code>string</code></p>
+                                </td>
+                                <td>The location's street address</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">street2</code> <code>string</code></p>
+                                </td>
+                                <td>The location's second address line (apartment, suite, etc.)</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">city</code> <code>string</code></p>
+                                </td>
+                                <td>The location's city</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">state</code> <code>string</code></p>
+                                </td>
+                                <td>The location's state</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">zip</code> <code>string</code></p>
+                                </td>
+                                <td>The location's zip code or postal code</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">country</code> <code>string</code></p>
+                                </td>
+                                <td>The location's country as a two-letter code (e.g. "US")</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">latitude</code> <code>float</code></p>
+                                </td>
+                                <td>The location's latitude</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">longitude</code> <code>float</code></p>
+                                </td>
+                                <td>The location's longitude</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">distributor</code> <code>object</code></p>
+                        </td>
+                        <td>
+                          <p class="cell">Organization ID that is responsible for appointment fulfillment.</p>
+                          <table class="table table-sm table-borderless">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                                  <p class="small">required</p>
+                                </td>
+                                <td>Distributing organization ID.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">subject</code> <code>Patient object</code></p>
+                        </td>
+                        <td>
+                          <p class="cell">The Patient</p>
+                          <table class="table table-sm table-borderless">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">id</code> <code>integer</code></p>
+                                </td>
+                                <td>The Patient's unique ID</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's legal first name</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">middle_name</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's middle name</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's legal last name</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's phone number</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's email address</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's biological sex</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">gender</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's gender</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">messaging_enabled_sms</code> <code>boolean</code></p>
+                                </td>
+                                <td>
+                                  Determines whether the patient should receive SMS messages.
+                                  If using patient patients and this is enabled, an email address must be provided.
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">messaging_enabled_email</code> <code>boolean</code></p>
+                                </td>
+                                <td>
+                                  Determines whether the patient should receive emails.
+                                  If using patient requests and no phone number is provided, this is ignored for the purposes of sending the patient request.
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">specialist</code> <code>object</code></p>
+                        </td>
+                        <td>
+                          <p class="cell">Specialist assigned to this appointment.</p>
+                          <table class="table table-sm table-borderless">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                                  <p class="small">required</p>
+                                </td>
+                                <td>Specialist ID.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">payment_status</code> <code>string</code></p>
+                        </td>
+                        <td>Disposition of outgoing payment to distributor/specialist.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">payment_amount</code> <code>number</code></p>
+                        </td>
+                        <td>Amount that the distributor/specialist will receive as payment.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">network</code> <code>Array[objects]</code></p>
+                        </td>
+                        <td>
+                          <p class="cell">Organization IDs with appointment visibility when status is 'Available'.</p>
+                          <table class="table table-sm table-borderless">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                                  <p class="small">required</p>
+                                </td>
+                                <td>Organization ID.</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Request JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "status": "Accepted",
+    "type": "Single",
+    "published_at": "2016-09-19T19:00:43.511Z",
+    "specialists_needed": 1,
+    "specialist_payment": 75,
+    "location": {
+      "id": 1001,
+      "label": "Home",
+      "street": "123 Fourth St",
+      "street2": "Suite 101",
+      "city": "Richmond",
+      "state": "Virginia",
+      "zip": "10001",
+      "country": "US",
+      "phone": "+17183211234",
+      "latitude": 37.5407246,
+      "longitude": -77.4360481,
+      "timezone": "America/New_York"
+    },
+    "distributor": {
+      "id": 1001
+    },
+    "subject": {
+      "id": 1001,
+      "name": "Joseph Schmoseph",
+      "dob": "1977-06-01",
+      "gender": "female",
+      "phone": "+17183211234",
+      "email": "testguy@example.com",
+      "photo_url": "http://example.com/pic.png",
+      "addresses": [
+        {
+          "id": 1001,
+          "label": "Home",
+          "street": "123 Fourth St",
+          "street2": "Suite 101",
+          "city": "Richmond",
+          "state": "Virginia",
+          "zip": "10001",
+          "country": "US",
+          "phone": "+17183211234",
+          "latitude": 37.5407246,
+          "longitude": -77.4360481,
+          "timezone": "America/New_York"
+        }
+      ],
+      "tags": [
+        {
+          "id": 1001,
+          "name": "Centrifuge",
+          "color": "#FF0000",
+          "description": "Lorem ipsum dolor sit amet",
+          "locked": false,
+          "alert": false,
+          "organization_id": null
+        }
+      ],
+      "documents": [
+        {
+          "id": 1001,
+          "name": "Certification",
+          "url": "https://example.com/certification"
+        }
+      ]
+    },
+    "specialist": {
+      "id": 1001
+    },
+    "network": [
+      {
+        "id": 1001
+      }
+    ]
+  }
+                    </code>
+                  </pre>
                 </div>
               </div>
               <div class="row">
@@ -2957,6 +3887,22 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col">
                   <a id="RetrieveApptList"></a>
                   <hr>
@@ -2970,6 +3916,170 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-6">
+                  <h5>Search Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">page</code> <code>number</code></p>
+                        </td>
+                        <td>Page number of appointments to return.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">limit</code> <code>number</code></p>
+                        </td>
+                        <td>Number of appointments to return per page.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">lat</code> <code>number</code></p>
+                        </td>
+                        <td>Latitude of search center point.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">lon</code> <code>number</code></p>
+                        </td>
+                        <td>Longitude of search center point.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">radius</code> <code>number</code></p>
+                        </td>
+                        <td>Search radius in miles.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">from</code> <code>number</code></p>
+                        </td>
+                        <td>Search start date (Unix timestamp)</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">until</code> <code>number</code></p>
+                        </td>
+                        <td>Searche end date (Unix timestamp)</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">status</code> <code>Array[string]</code></p>
+                        </td>
+                        <td>Filter results by status value.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">type</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by type ('Single','Shift').</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">authorized</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by whether the current user is authorized to accept.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">newestFirst</code> <code>string</code></p>
+                        </td>
+                        <td>Order results by start time. Default <code>false</code>.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">specialist</code> <code>number</code></p>
+                        </td>
+                        <td>Filter results by assigned Specialist ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">specialistName</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by assigned Specialist name.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">subject</code> <code>number</code></p>
+                        </td>
+                        <td>Filter results by assigned Subject ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">subjectName</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by assigned Subject name.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">creator</code> <code>number</code></p>
+                        </td>
+                        <td>Filter results by assigned Creator ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">creatorName</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by assigned Creator name.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">vendor</code> <code>number</code></p>
+                        </td>
+                        <td>Filter results by assigned Vendor ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">vendorName</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by assigned Vendor name.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">service</code> <code>number</code></p>
+                        </td>
+                        <td>Filter results by assigned Service ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">serviceName</code> <code>string</code></p>
+                        </td>
+                        <td>Filter results by assigned Service name.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">parentId</code> <code>number</code></p>
+                        </td>
+                        <td>Filter for appointments with the provided <code>parent_id</code>.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">unscheduled</code> <code>string</code></p>
+                        </td>
+                        <td>
+                          Filters appointments based on unscheduled status. Default <code>exclude</code>.
+                          <ul style="list-style-type: circle;">
+                            <li>
+                              <code>only</code> returns only the unscheduled appointments
+                            </li>
+                            <li>
+                              <code>include</code> returns unscheduled appointments and scheduled appointments
+                            </li>
+                            <li>
+                              <code>exclude</code> returns only scheduled appointments (Default)
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Sample Search Parameters String</h5>
+                    <code>page=1&limit=25&lat=37.5407246&lon=-77.4360481&radius=10&from=1474557817&until=1474593817&type=Single&authorized=true&newestFirst=false&specialist=1004&specialistName=Doe&subject=1004&subjectName=Doe&creator=1004&creatorName=Doe&vendor=1004&vendorName=Doe&service=1004&serviceName=Doe&parentId=1001&unscheduled=exclude</code>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col">
                   <a id="CancelAppt"></a>
                   <hr>
@@ -2979,7 +4089,23 @@
                 <div class="col-6">
                   <h4>Cancel Appointment</h4>
                   <p><code>POST https://api.workpath.co/appointments/[id]/cancel</code></p>
-                  <p>Cancel appointment. Requires appointment edit permission.</p>
+                  <p>Cancel appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="row">
@@ -3000,35 +4126,789 @@
                 <div class="col-6">
                   <h4>Add Tag to Appointment</h4>
                   <p><code>POST https://api.workpath.co/appointments/[id]/tags</code></p>
-                  <p>Apply Tag to a Appointment. Requires appointment edit permission.</p>
+                  <p>Apply Tag to a Appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Tag ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">expires_at</code> <code>string</code></p>
+                        </td>
+                        <td>Tag expiration timestamp.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Request JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "tag": {
+      "id": 1001,
+      "expires_at": "2017-09-09T09:09:09Z"
+    }
+  }
+                    </code>
+                  </pre>
                 </div>
               </div>
               <div class="row">
                 <div class="col-6">
                   <h4>Delete Tag in Appointment</h4>
                   <p><code>DELETE https://api.workpath.co/appointments/[id]/tags/[tagid]</code></p>
-                  <p>Deletes a tag in an appointment. Requires appointment edit permission.</p>
+                  <p>Deletes a tag in an appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">tagid</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Tag ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="row">
                 <div class="col-6">
                   <h4>Add Note to Appointment</h4>
                   <p><code>POST https://api.workpath.co/appointments/[id]/notes</code></p>
-                  <p>Apply note to an appointment. Requires appointment edit permission.</p>
+                  <p>Apply note to an appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">body</code> <code>string</code></p>
+                        </td>
+                        <td>Note body.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">type</code> <code>string</code></p>
+                        </td>
+                        <td>Type of note.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">title</code> <code>string</code></p>
+                        </td>
+                        <td>Title of note.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Request JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "body": "Note body",
+    "type": "Warning",
+    "title": "Admin Note"
+  }
+                    </code>
+                  </pre>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Response Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                        </td>
+                        <td>Note ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">author</code> <code>object</code></p>
+                        </td>
+                        <td>**PUT STUFF HERE**</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">body</code> <code>string</code></p>
+                        </td>
+                        <td>Body of the note.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">type</code> <code>string</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Type of note.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">title</code> <code>string</code></p>
+                        </td>
+                        <td>Title of the note.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Note Response JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "id": 1001,
+    "author": {
+      "id": 1001,
+      "is_admin": false,
+      "email": "user@example.com",
+      "email_verified_at": "2016-09-23T18:25:43.511Z",
+      "last_login_at": "2016-09-23T18:25:43.511Z",
+      "tos_accepted_at": "2016-09-23T18:25:43.511Z",
+      "type": [
+        "Organization, Specialist"
+      ],
+      "latitude": 37.5407246,
+      "longitude": -77.4360481,
+      "gps_updated_at": null,
+      "home_radius": 60,
+      "location_radius": 60,
+      "devices": [
+        {
+          "id": "nachou9e8o0e7",
+          "type": "android",
+          "created_at": "2019-07-01T20:45:54.000Z",
+          "updated_at": "2019-07-01T20:45:54.000Z",
+          "user_id": 1001
+        }
+      ],
+      "person": {
+        "id": 1001,
+        "name": "Joseph Schmoseph",
+        "dob": "1977-06-01",
+        "gender": "female",
+        "phone": "+17183211234",
+        "email": "testguy@example.com",
+        "photo_url": "http://example.com/pic.png",
+        "addresses": [
+          {
+            "id": 1001,
+            "label": "Home",
+            "street": "123 Fourth St",
+            "street2": "Suite 101",
+            "city": "Richmond",
+            "state": "Virginia",
+            "zip": "10001",
+            "country": "US",
+            "phone": "+17183211234",
+            "latitude": 37.5407246,
+            "longitude": -77.4360481,
+            "timezone": "America/New_York"
+          }
+        ],
+        "tags": [
+          {
+            "id": 1001,
+            "name": "Centrifuge",
+            "color": "#FF0000",
+            "description": "Lorem ipsum dolor sit amet",
+            "locked": false,
+            "alert": false,
+            "organization_id": null
+          }
+        ],
+        "documents": [
+          {
+            "id": 1001,
+            "name": "Certification",
+            "url": "https://example.com/certification"
+          }
+        ]
+      },
+      "organizations": [
+        {
+          "id": 1001,
+          "name": "XYZ Cardiology",
+          "global_id": "pgsk*a08098fad",
+          "description": "Demo organization",
+          "phone": "+17183211234",
+          "website": "http://examplecorp.com/",
+          "logo_url": "http://example.com/logo.png",
+          "disable_claimed_status": false,
+          "disable_available_status": false,
+          "customer_contact_phone": "+17183211234",
+          "customer_contact_email": "one@example.com",
+          "merchant_id": null,
+          "customer_id": null,
+          "payment_id": null,
+          "braintree_id": null,
+          "prepayment_amount": 1000,
+          "tiered_transactions": true,
+          "users_included": 5,
+          "addl_user_charge": 49.99,
+          "management_fee": 0,
+          "organizable": "vendor",
+          "organizable_id": 1001,
+          "vendor": {
+            "id": 1001,
+            "default_service_fee": 100,
+            "default_specialist_percentage": 0,
+            "organization": {
+              "id": 1001,
+              "name": "XYZ Cardiology",
+              "description": "Demo organization",
+              "phone": "+17183211234",
+              "website": "http://examplecorp.com/",
+              "logo_url": "http://example.com/logo.png",
+              "disable_claimed_status": false,
+              "disable_available_status": false,
+              "customer_contact_phone": "+17183211234",
+              "customer_contact_email": "one@example.com",
+              "merchant_id": null,
+              "customer_id": null,
+              "payment_id": null,
+              "braintree_id": null,
+              "prepayment_amount": 1000,
+              "tiered_transactions": true,
+              "users_included": 5,
+              "addl_user_charge": 49.99,
+              "management_fee": 0,
+              "organizable": "vendor",
+              "organizable_id": 1001,
+              "addresses": [
+                {
+                  "id": 1001,
+                  "label": "Home",
+                  "street": "123 Fourth St",
+                  "street2": "Suite 101",
+                  "city": "Richmond",
+                  "state": "Virginia",
+                  "zip": "10001",
+                  "country": "US",
+                  "phone": "+17183211234",
+                  "latitude": 37.5407246,
+                  "longitude": -77.4360481,
+                  "timezone": "America/New_York"
+                }
+              ],
+              "tags": [
+                {
+                  "id": 1001,
+                  "name": "Centrifuge",
+                  "color": "#FF0000",
+                  "description": "Lorem ipsum dolor sit amet",
+                  "locked": false,
+                  "alert": false,
+                  "organization_id": null
+                }
+              ],
+              "preferences": [
+                {
+                  "id": null,
+                  "name": "",
+                  "value": null
+                }
+              ]
+            },
+            "services": [
+              {
+                "id": 1001,
+                "vendor": {
+                  "id": 1001
+                },
+                "name": "Blood Draw",
+                "description": "A standard blood draw",
+                "vendor_fee": 60,
+                "specialist_payment": 40,
+                "duration": 15,
+                "shippable": false,
+                "archived": false,
+                "tags": [
+                  {
+                    "id": 1001,
+                    "name": "Centrifuge",
+                    "color": "#FF0000",
+                    "description": "Lorem ipsum dolor sit amet",
+                    "locked": false,
+                    "alert": false,
+                    "organization_id": null
+                  }
+                ],
+                "steps": [
+                  {
+                    "id": 1001,
+                    "rank": 10,
+                    "title": "Package tube",
+                    "description": "Fill the tube",
+                    "address": {
+                      "label": "Home",
+                      "street": "123 Fourth St",
+                      "street2": "Suite 101",
+                      "city": "Richmond",
+                      "state": "Virginia",
+                      "zip": "10001",
+                      "country": "US",
+                      "phone": "+17183211234",
+                      "latitude": 37.5407246,
+                      "longitude": -77.4360481,
+                      "timezone": "America/New_York"
+                    },
+                    "type": "action",
+                    "stage": "pre"
+                  }
+                ]
+              }
+            ]
+          },
+          "roles": {
+            "office_user": false,
+            "mobile_user": false,
+            "orderer": false
+          },
+          "preferences": [
+            {
+              "id": null,
+              "name": "",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "body": "",
+    "type": "",
+    "title": ""
+  }
+                    </code>
+                  </pre>
                 </div>
               </div>
               <div class="row">
                 <div class="col-6">
                   <h4>Update Note in Appointment</h4>
                   <p><code>PUT https://api.workpath.co/appointments/[id]/notes/[noteId]</code></p>
-                  <p>Update note in an appointment. Requires appointment edit permission.</p>
+                  <p>Update note in an appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">noteId</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Note ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">body</code> <code>string</code></p>
+                        </td>
+                        <td>Note body.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">type</code> <code>string</code></p>
+                        </td>
+                        <td>Type of note.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">title</code> <code>string</code></p>
+                        </td>
+                        <td>Title of note.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Request JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "body": "Note body",
+    "type": "Warning",
+    "title": "Admin Note"
+  }
+                    </code>
+                  </pre>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Response Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                        </td>
+                        <td>Note ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">author</code> <code>object</code></p>
+                        </td>
+                        <td>**PUT STUFF HERE**</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">body</code> <code>string</code></p>
+                        </td>
+                        <td>Body of the note.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">type</code> <code>string</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Type of note.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">title</code> <code>string</code></p>
+                        </td>
+                        <td>Title of the note.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Note Response JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "id": 1001,
+    "author": {
+      "id": 1001,
+      "is_admin": false,
+      "email": "user@example.com",
+      "email_verified_at": "2016-09-23T18:25:43.511Z",
+      "last_login_at": "2016-09-23T18:25:43.511Z",
+      "tos_accepted_at": "2016-09-23T18:25:43.511Z",
+      "type": [
+        "Organization, Specialist"
+      ],
+      "latitude": 37.5407246,
+      "longitude": -77.4360481,
+      "gps_updated_at": null,
+      "home_radius": 60,
+      "location_radius": 60,
+      "devices": [
+        {
+          "id": "nachou9e8o0e7",
+          "type": "android",
+          "created_at": "2019-07-01T20:45:54.000Z",
+          "updated_at": "2019-07-01T20:45:54.000Z",
+          "user_id": 1001
+        }
+      ],
+      "person": {
+        "id": 1001,
+        "name": "Joseph Schmoseph",
+        "dob": "1977-06-01",
+        "gender": "female",
+        "phone": "+17183211234",
+        "email": "testguy@example.com",
+        "photo_url": "http://example.com/pic.png",
+        "addresses": [
+          {
+            "id": 1001,
+            "label": "Home",
+            "street": "123 Fourth St",
+            "street2": "Suite 101",
+            "city": "Richmond",
+            "state": "Virginia",
+            "zip": "10001",
+            "country": "US",
+            "phone": "+17183211234",
+            "latitude": 37.5407246,
+            "longitude": -77.4360481,
+            "timezone": "America/New_York"
+          }
+        ],
+        "tags": [
+          {
+            "id": 1001,
+            "name": "Centrifuge",
+            "color": "#FF0000",
+            "description": "Lorem ipsum dolor sit amet",
+            "locked": false,
+            "alert": false,
+            "organization_id": null
+          }
+        ],
+        "documents": [
+          {
+            "id": 1001,
+            "name": "Certification",
+            "url": "https://example.com/certification"
+          }
+        ]
+      },
+      "organizations": [
+        {
+          "id": 1001,
+          "name": "XYZ Cardiology",
+          "global_id": "pgsk*a08098fad",
+          "description": "Demo organization",
+          "phone": "+17183211234",
+          "website": "http://examplecorp.com/",
+          "logo_url": "http://example.com/logo.png",
+          "disable_claimed_status": false,
+          "disable_available_status": false,
+          "customer_contact_phone": "+17183211234",
+          "customer_contact_email": "one@example.com",
+          "merchant_id": null,
+          "customer_id": null,
+          "payment_id": null,
+          "braintree_id": null,
+          "prepayment_amount": 1000,
+          "tiered_transactions": true,
+          "users_included": 5,
+          "addl_user_charge": 49.99,
+          "management_fee": 0,
+          "organizable": "vendor",
+          "organizable_id": 1001,
+          "vendor": {
+            "id": 1001,
+            "default_service_fee": 100,
+            "default_specialist_percentage": 0,
+            "organization": {
+              "id": 1001,
+              "name": "XYZ Cardiology",
+              "description": "Demo organization",
+              "phone": "+17183211234",
+              "website": "http://examplecorp.com/",
+              "logo_url": "http://example.com/logo.png",
+              "disable_claimed_status": false,
+              "disable_available_status": false,
+              "customer_contact_phone": "+17183211234",
+              "customer_contact_email": "one@example.com",
+              "merchant_id": null,
+              "customer_id": null,
+              "payment_id": null,
+              "braintree_id": null,
+              "prepayment_amount": 1000,
+              "tiered_transactions": true,
+              "users_included": 5,
+              "addl_user_charge": 49.99,
+              "management_fee": 0,
+              "organizable": "vendor",
+              "organizable_id": 1001,
+              "addresses": [
+                {
+                  "id": 1001,
+                  "label": "Home",
+                  "street": "123 Fourth St",
+                  "street2": "Suite 101",
+                  "city": "Richmond",
+                  "state": "Virginia",
+                  "zip": "10001",
+                  "country": "US",
+                  "phone": "+17183211234",
+                  "latitude": 37.5407246,
+                  "longitude": -77.4360481,
+                  "timezone": "America/New_York"
+                }
+              ],
+              "tags": [
+                {
+                  "id": 1001,
+                  "name": "Centrifuge",
+                  "color": "#FF0000",
+                  "description": "Lorem ipsum dolor sit amet",
+                  "locked": false,
+                  "alert": false,
+                  "organization_id": null
+                }
+              ],
+              "preferences": [
+                {
+                  "id": null,
+                  "name": "",
+                  "value": null
+                }
+              ]
+            },
+            "services": [
+              {
+                "id": 1001,
+                "vendor": {
+                  "id": 1001
+                },
+                "name": "Blood Draw",
+                "description": "A standard blood draw",
+                "vendor_fee": 60,
+                "specialist_payment": 40,
+                "duration": 15,
+                "shippable": false,
+                "archived": false,
+                "tags": [
+                  {
+                    "id": 1001,
+                    "name": "Centrifuge",
+                    "color": "#FF0000",
+                    "description": "Lorem ipsum dolor sit amet",
+                    "locked": false,
+                    "alert": false,
+                    "organization_id": null
+                  }
+                ],
+                "steps": [
+                  {
+                    "id": 1001,
+                    "rank": 10,
+                    "title": "Package tube",
+                    "description": "Fill the tube",
+                    "address": {
+                      "label": "Home",
+                      "street": "123 Fourth St",
+                      "street2": "Suite 101",
+                      "city": "Richmond",
+                      "state": "Virginia",
+                      "zip": "10001",
+                      "country": "US",
+                      "phone": "+17183211234",
+                      "latitude": 37.5407246,
+                      "longitude": -77.4360481,
+                      "timezone": "America/New_York"
+                    },
+                    "type": "action",
+                    "stage": "pre"
+                  }
+                ]
+              }
+            ]
+          },
+          "roles": {
+            "office_user": false,
+            "mobile_user": false,
+            "orderer": false
+          },
+          "preferences": [
+            {
+              "id": null,
+              "name": "",
+              "value": null
+            }
+          ]
+        }
+      ]
+    },
+    "body": "",
+    "type": "",
+    "title": ""
+  }
+                    </code>
+                  </pre>
                 </div>
               </div>
               <div class="row">
                 <div class="col-6">
                   <h4>Delete Note in Appointment</h4>
                   <p><code>DELETE https://api.workpath.co/appointments/[id]/notes/[noteId]</code></p>
-                  <p>Deletes a note in an appointment. Requires appointment edit permission.</p>
+                  <p>Deletes a note in an appointment. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">noteId</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Note ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="row">
@@ -3040,6 +4920,44 @@
               </div>
               <div class="row">
                 <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Attributes</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">file</code> <code>string</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>MIME data.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">name</code> <code>string</code></p>
+                        </td>
+                        <td>Title of the document. Ex: <code>"2004 Certification"</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
                   <h4>Remove Document from Appointment</h4>
                   <p><code>DELETE https://api.workpath.co/appointments/[id]/documents/[documentId]</code></p>
                   <p>Delete a document from an appointment.</p>
@@ -3047,9 +4965,48 @@
               </div>
               <div class="row">
                 <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">documentId</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Document ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
                   <h4>Add Data to Appointment</h4>
                   <p><code>POST https://api.workpath.co/appointments/[id]/data</code></p>
-                  <p>Add collected data to an appointment. Useful for storing service data, shipping IDs, etc. Requires appointment edit permission.</p>
+                  <p>Add collected data to an appointment. Useful for storing service data, shipping IDs, etc. Requires “Update appointment details” permission.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Appointment ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
