@@ -73,6 +73,9 @@
                 <a href="#GetStarted"><i class="bi bi-star-fill wp-icon"></i> Getting Started</a>
               </li>
               <li>
+                <a href="#HelloWorld"><i class="bi bi-emoji-sunglasses wp-icon"></i> Hello World</a>
+              </li>
+              <li>
                 <span onclick="changeClassName('hidden-1')"><i class="bi bi-key-fill wp-icon"></i> Authentication and Keys</span>
                 <ul class="hidden" id="hidden-1">
                   <li><a href="#Authentication">Authentication Top</a></li>
@@ -117,10 +120,9 @@
                 </ul>
               </li>
               <li>
-                <span onclick="changeClassName('hidden-7')"><i class="bi bi-clock-history wp-icon"></i> Appointments</span>
+                <span onclick="changeClassName('hidden-7')"><i class="bi bi-calendar2-date wp-icon"></i> Appointments</span>
                 <ul class="hidden" id="hidden-7">
                   <li><a href="#Appointments">Appointments Top</a></li>
-                  <li><a href="#CreateAppt">Create Appointment</a></li>
                   <li><a href="#UpdateAppt">Update Appointment</a></li>
                   <li><a href="#RetrieveAppt">Retrieve Appointment</a></li>
                   <li><a href="#RetrieveApptList">Retrieve Appointment List</a></li>
@@ -200,6 +202,169 @@
                   <p>
                     Access to our Client Management Dashboard can be found
                     <a href="https://api.workpath.co/clients" target="blank">here</a>.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+                </div>
+              </div>
+            </div>
+
+            <a id="HelloWorld"></a>
+            <header class="wp-docs-content-tab"></header>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h1>"Hello World" API Use Example</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    In true developer fashion, we have provided a quick "Hello World" tutorial for you to try out! This example below will explain how to authenticate and then create a simple intake using our system.
+                  </p>
+                  <p>The steps we will walk through:</p>
+                  <ol>
+                    <li>Create Your First API Key</li>
+                    <li>Retrieve A Token With Your API Key</li>
+                    <li>Create an Intake</li>
+                    <li>Fetch the Intake</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h3>1. Create Your First API Key</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    Workpath should provide you with a login email and password that has the correct user permissions needed to reach the <code>/clients</code> area. Once you have obtained those, you can start the process of working with our API! You will need to go here to login: <a href="api.workpath.co/clients" target="_blank">Client Management</a>.
+                  </p>
+                  <p>Once you login using the email and password provided for you from Workpath, you will be directed to a screen that shows a button to "Add New Credential".</p>
+                  <p>
+                    The image to the right shows an example Client Credential being created. Please note you need to check which permissions you want available to you. (You will be able to edit permissions later.)
+                  </p>
+                </div>
+                <div class="col-6">
+                  <img src="images/hello_world_client.jpeg" alt="Create a new API client" width="500px" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    After you have saved your newly created client credential, you will be directed to a screen that looks like the image to the right. You now have two tabs at the top as well as two different buttons at the bottom. This is the credential edit screen where you can update permissions by checking or un-checking the permission boxes, revoke the client, and create API keys.
+                  </p>
+                </div>
+                <div class="col-6">
+                  <img src="images/hello_world_client_2.jpeg" alt="After saving a new client" width="500px" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>To generate a new API key, click on the "API Keys" tab and then click the button that says "Add API Key".</p>
+                  <p>
+                    The image to the right shows a newly generated API Key and Password pair. This is what you will need when you are communicating with our API. As the message on the image states, once you navigate away from that page, you will no longer be able to see the password, so make sure that you make a note of it in your records.
+                  </p>
+                </div>
+                <div class="col-6">
+                  <img src="images/hello_world_api_key.png" alt="Create a new API key" width="500px" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>Congratulations! You have created your first client credential and your first API key and password pairing!</p>
+                  <p>
+                    Your screen will look similar to the image on the right. Once you have made your first client credential and API key and password pair, you will be able to create a second API key and password using our API. The instructions for that process are located <a href="#CreateApiCredential">HERE</a> in the docs.
+                  </p>
+                </div>
+                <div class="col-6">
+                  <img src="images/hello_world_client_home.jpeg" alt="Client home screen" width="500px" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h3>2. Retrieve A Token With Your API Key</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    For this step, you will need the API key and password pair that you created in the previous step.
+                  </p>
+                  <p>
+                    Before you make any calls to our API, you will need to use your API key to generate an access token. The details for creating this access token are located <a href="#ClientCredential">HERE</a> in these docs.
+                  </p>
+                  <p>
+                    Essentially, you will be sending a URL-encoded string to the <code>/oauth/token</code> route given and you will receive a JSON object back that includes your access token.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h3>3. Create an Intake</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    Using the access token that you requested in step two, you will then be able to create what we can an Intake! An intake will, in turn, create an appointment once the patient has filled out all of the required fields and submitted their response.
+                  </p>
+                  <p>
+                    The Create Intake details, such as request attributes and response JSON objects, are located <a href="#CreateIntake">HERE</a> in these docs. 
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h3>4. Fetch the Intake</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    Using the access token that you requested in step two, you can call <code>GET https://api.workpath.co/intakes/[id]</code> using the <code>id</code> of the intake you created in the previous step to fetch that particular intake.
+                  </p>
+                  <p>
+                    Refer to the Intake Object details for the shape of the Intake JSON Object that will be returned to you <a href="#CreateIntake">HERE</a> in these docs. 
                   </p>
                 </div>
               </div>
@@ -459,6 +624,11 @@
   }                  
                     </code>
                   </pre>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <a id="ClientCredential"></a>
                 </div>
               </div>
               <div class="row">
@@ -2762,19 +2932,6 @@
               </div>
               <div class="row">
                 <div class="col">
-                  <a id="CreateAppt"></a>
-                  <hr>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <h4>Create Appointment</h4>
-                  <p><code>POST https://api.workpath.co/appointments</code></p>
-                  <p>Post a new appointment. Requires appointment create permission.</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
                   <a id="UpdateAppt"></a>
                   <hr>
                 </div>
@@ -2783,7 +2940,7 @@
                 <div class="col-6">
                   <h4>Update Appointment</h4>
                   <p><code>PUT https://api.workpath.co/appointments/[id]</code></p>
-                  <p>Modifies an individual appointment. Requires appointment edit permission.</p>
+                  <p>Modifies an individual appointment. Requires appointment edit permission. **LEAVE START TIME OUT OF REQUEST**</p>
                 </div>
               </div>
               <div class="row">
