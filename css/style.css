@@ -47,6 +47,17 @@ body.wp-docs {
   display: block;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.sidenavscroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.sidenavscroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 h1,
 h2,
 h3,
@@ -145,22 +156,27 @@ code.attribute {
 -----------------------------------------------*/
 
 .wp-docs-wrapper {
-  display: grid;
-  grid-template-columns: 260px 1fr;
+  /* display: grid;
+  grid-template-columns: 260px 1fr; */
   border-bottom: 1px solid var(--border-color);
 }
 
 /* Sidebar 
 -----------------------------------------------*/
 .wp-docs-sidebar {
-  grid: 1/2;
+  /* grid: 1/2; */
   border-right: 1px solid var(--border-color);
+  position: fixed;
+    /* width: 200px; */
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
 }
 .wp-docs-sidebar ul {
   margin: 0;
   padding: 1em;
-  position: sticky;
-  top: 4.25rem;
+  /* position: sticky;
+  top: 4.25rem; */
 }
 .wp-docs-sidebar ul li {
   list-style-type: none;
@@ -212,7 +228,7 @@ ul {
 /* Content
 -----------------------------------------------*/
 .wp-docs-page-title {
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .wp-docs-content-tab {
