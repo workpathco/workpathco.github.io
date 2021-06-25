@@ -117,6 +117,7 @@
                   <li><a href="#PatientRequests">Patient Requests</a></li>
                   <li><a href="#IntakeObject">Intake Object</a></li>
                   <li><a href="#CreateIntake">Create Intake</a></li>
+                  <li><a href="#UploadIntakeDocument">Upload Document</a></li>
                 </ul>
               </li>
               <li>
@@ -2890,6 +2891,68 @@
                       </tr>
                     </tbody>
                   </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <p>Need additional assistance? <a href="https://help.workpath.co/en/" target="blank">Click Here</a></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <a id="UploadIntakeDocument"></a>
+                  <hr>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4>Upload Intake Document</h4>
+                  <p><code>POST https://api.workpath.co/intakes/[:id]/documents</code></p>
+                  <p>Attaching documents to Intakes is done via the Upload Intake Document endpoint.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Headers</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>Content-Type: multipart/form-data</td>
+                      </tr>
+                      <tr>
+                        <td>Authorization: Bearer ut11023123...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h5>Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">file</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>MIME data</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <h5>Upload Document Response JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "id": 1001,
+    "name": "test-file.pdf",
+    "url": "https://s3.amazonaws.com/.../...",
+    "api_url": "https://api.workpath.co/.../...",
+    "documentable": "intake",
+    "documentable_id": 9402,
+    "created_at": "2021-06-17T12:00:00Z",
+    "updated_at": "2021-06-17T12:00:00Z"
+  }                                  
+                    </code>
+                  </pre>
                 </div>
               </div>
               <div class="row">
