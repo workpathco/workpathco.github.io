@@ -187,7 +187,7 @@
               <div class="row">
                 <div class="col-6">
                   <p>
-                    This document outlines the behaviors expected from Intake API Version 2 (V2). The Workpath REST API provides programmatic access to
+                    This document outlines the behaviors expected from Workpath's API for creating intakes and appointments. In Workpath, intakes are pre-appointment requests - incomplete data objects, and appointments are data objects used to track logistics for the patient, specimen, and specialist. The Workpath REST API provides programmatic access to
                     Workpath data for use in client applications and partner integrations. This is a working document as we continue to update our API.
                   </p>
                   <p>
@@ -196,13 +196,12 @@
                   </p>
                   <h4>Information We Need</h4>
                   <p>
-                    To start the appointment process, we require a certain amount of information from you about your patient, the provider of your
-                    patient, what labs you are wanting to run, and insurance information (if applicable). See the sections below about our endpoints you
+                    To start the appointment process, we require a certain amount of information from you to complete the appointment including contact and location information for your patient and what labs/tests you want to complete. In some cases, you may need to provide information on Providers, patient payment/insurance information, and other specimen-related data; if you think you may need assistance with this information, click <a href="https://help.workpath.co/en/" target="blank">here</a>. See the sections below about our endpoints you
                     will need in order to create a full appointment.
                   </p>
                   <p>
-                    Access to our Client Management Dashboard can be found
-                    <a href="https://api.workpath.co/clients" target="blank">here</a>.
+                    Access to our Client Management Dashboard where you can review your auth methods and keys can be found
+                    <a href="https://api.workpath.co/clients" target="blank">here</a> after we create your environment and accounts.
                   </p>
                 </div>
               </div>
@@ -340,7 +339,7 @@
               <div class="row">
                 <div class="col-6">
                   <p>
-                    Using the access token that you requested in step two, you will then be able to create what we can an Intake! An intake will, in turn, create an appointment once the patient has filled out all of the required fields and submitted their response.
+                    Using the access token that you requested in step two, you will then be able to create what we call an Intake! An intake will, in turn, create an appointment once the patient or provider has filled out all of the required fields and submitted their response.
                   </p>
                   <p>
                     The Create Intake details, such as request attributes and response JSON objects, are located <a href="#CreateIntake">HERE</a> in these docs. 
@@ -742,6 +741,20 @@
   }                  
                     </code>
                   </pre>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4>Authenticating with Your Token</h4>
+                  <p>
+                    The access token returned by the token exchanges listed above are used as the bearer token for all subsequent requests to the API in the form of an auth header (<code>Authorization: Bearer [access token]</code>). Subsequent requests made using an expired or invalid token will return a <code>401 - Unauthorized response code</code>.
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Headers</h5>
+                  <p><code>Authorization: Bearer ut11023123...</code></p>
                 </div>
               </div>
               <div class="row">
@@ -1177,7 +1190,7 @@
               <div class="row">
                 <div class="col-6">
                   <p>
-                    These are the endpoints you will need to hit in order to create a Patient, Guarantor, and an Insured Person for the Insurance Object
+                    In most cases, you will create your patient when submitting an intake. If not, these are the endpoints you will need to hit in order to create a Patient, Guarantor, and an Insured Person for the Insurance Object
                     later on.
                   </p>
                 </div>
@@ -1864,7 +1877,7 @@
               <div class="row">
                 <div class="col-6">
                   <p>
-                    If you do not know this information, simply send us an empty object and we will request the information from your patient directly.
+                    While we do not process payments through Workpath, we can pass that information to be included for a lab to review. If you do not know this information, simply send us an empty object and we will request the information from your patient. We will not ask for credit card or other ACH payment information from a patient, but can pass information like Insurance Group Number to a lab partner where needed.
                   </p>
                 </div>
               </div>
@@ -2104,7 +2117,10 @@
               <div class="row">
                 <div class="col-6">
                   <p>
-                    The Intake is the starting point for a patient request. The initial call takes in certain parameters about the patient and the service being ordered and, depending on the Order Form that is specified, sends a request to the patient (via email and/or SMS) for additional information. 
+                    The Intake is the starting point for an appointment, and will trigger a patient request and other validations for ensuring Workpath has all necessary information for your patient’s appointment. The initial call takes in certain parameters about the patient and the service being ordered and, depending on the Order Form that is specified, sends a request to the patient (via email and/or SMS) for additional information. 
+                  </p>
+                  <p>
+                    Before you get started with sending your Intakes, make sure you work with Workpath’s Customer Success team to set up your mock input forms, fields, and expected behavior so we can simulate the request and process as close to the future state.
                   </p>
                 </div>
               </div>
@@ -2128,10 +2144,10 @@
                   </p>
                   <ul style="list-style-type: circle;">
                     <li>
-                      If the Order Form is set to <strong>Auto-Publish</strong>, the Intake will be automatically converted to an Appointment.
+                      If Workpath has set <strong>auto-convert</strong> for your organization, the Intake will automatically be converted to an Appointment and released to the Workpath Network.
                     </li>
                     <li>
-                      If not, the Intake will populate within the "New" tab of the <strong>Service Requests</strong> tab on the web app. An Office User can then verify the Intake and convert it to an Appointment.
+                      If not, the Intake will populate within the "Pending Patient Request" tab of the <strong>Pending Appointments</strong> page on the web app. Once the patient responds, an Office User can then verify the Intake and convert it to an Appointment for release.
                     </li>
                   </ul>
                 </div>
@@ -2566,6 +2582,7 @@
                       <tr>
                         <td>
                           <p class="cell"><code class="attribute">order_form</code> <code>integer</code></p>
+                          <p class="small">required</p>
                         </td>
                         <td>The unique ID of the Order Form that is attached to this Intake</td>
                       </tr>
@@ -2646,6 +2663,7 @@
                               <tr>
                                 <td>
                                   <p class="cell"><code class="attribute">first_name</code> <code>string</code></p>
+                                  <p class="small">required</p>
                                 </td>
                                 <td>The Patient's legal first name</td>
                               </tr>
@@ -2658,18 +2676,21 @@
                               <tr>
                                 <td>
                                   <p class="cell"><code class="attribute">last_name</code> <code>string</code></p>
+                                  <p class="small">required</p>
                                 </td>
                                 <td>The Patient's legal last name</td>
                               </tr>
                               <tr>
                                 <td>
                                   <p class="cell"><code class="attribute">phone</code> <code>string</code></p>
+                                  <p class="small">required</p>
                                 </td>
                                 <td>The Patient's phone number</td>
                               </tr>
                               <tr>
                                 <td>
                                   <p class="cell"><code class="attribute">email</code> <code>string</code></p>
+                                  <p class="small">required</p>
                                 </td>
                                 <td>The Patient's email address</td>
                               </tr>
@@ -2710,6 +2731,7 @@
                       <tr>
                         <td>
                           <p class="cell"><code class="attribute">services</code> <code>array of objects</code></p>
+                          <p class="small">required</p>
                         </td>
                         <td>
                           <p class="cell">The requested services and their related ICD-10 codes</p>
@@ -2895,6 +2917,44 @@
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
+                <div class="col-6">
+                  <h5>Example Intake Request JSON</h5>
+                  <pre>
+                    <code>
+  {
+    "order_form": 1, // required
+    "provider": {
+      "first_name": "Bruce",
+      "last_name": "Banner",
+      "npi": "0101010111"
+    },
+    "patient": { 
+      "first_name": "Anthony", // required
+      "last_name": "Stark", // required
+      "gender": "male",
+      "phone": "+18048675309", // required
+      "email": "tony@starkindustries.com", // required
+      "messaging_enabled_sms": true
+    },
+    "services": [ // required
+      { "id": 12312 },
+      { "id": 91232 }
+    ],
+    "start_time": "2021-06-20T13:00:00Z",
+    "location": {
+      "street": "200 Park Avenue",
+      "street2": "The Top",
+      "city": "New York",
+      "state": "New York",
+      "zip": "10166",
+      "country": "US"
+    },
+    "notes": "Patient has fusion reactor in chest."
+  }                                    
+                    </code>
+                  </pre>
                 </div>
               </div>
               <div class="row">
@@ -4286,7 +4346,9 @@
                 <div class="col-6">
                   <h4>Add Note to Appointment</h4>
                   <p><code>POST https://api.workpath.co/appointments/[id]/notes</code></p>
-                  <p>Apply note to an appointment. Requires “Update appointment details” permission.</p>
+                  <p>
+                    Apply note to an appointment. Requires “Update appointment details” permission. Workpath uses and displays different types of notes depending on the user, status, and context; work with our Workpath Customer Success team to identify the ideal note type and contents for your workflow.
+                  </p>
                 </div>
               </div>
               <div class="row">
