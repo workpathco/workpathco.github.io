@@ -1246,7 +1246,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                          <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
                           <p class="small">required</p>
                         </td>
                         <td>The Person's date of birth.</td>
@@ -1276,7 +1276,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                          <p class="cell"><code class="attribute">messaging_enabled_sms</code> <code>boolean</code></p>
                         </td>
                         <td>Is messaging enabled for the Person?</td>
                       </tr>
@@ -1377,7 +1377,7 @@
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
-    "messaging_enabled": true,
+    "messaging_enabled_sms": true,
     "addresses": [
       {
         "id": 1001,
@@ -1450,7 +1450,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                          <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
                           <p class="small">required</p>
                         </td>
                         <td>The Person's date of birth.</td>
@@ -1480,7 +1480,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                          <p class="cell"><code class="attribute">messaging_enabled_sms</code> <code>boolean</code></p>
                         </td>
                         <td>Is messaging enabled for the Person?</td>
                       </tr>
@@ -1500,7 +1500,7 @@
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
-    "messaging_enabled": true
+    "messaging_enabled_sms": true
   }                                
                     </code>
                   </pre>
@@ -1547,7 +1547,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                          <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
                         </td>
                         <td>The Person's date of birth.</td>
                       </tr>
@@ -1574,7 +1574,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                          <p class="cell"><code class="attribute">messaging_enabled_sms</code> <code>boolean</code></p>
                         </td>
                         <td>Is messaging enabled for the Person?</td>
                       </tr>
@@ -1614,7 +1614,7 @@
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
-    "messaging_enabled": true,
+    "messaging_enabled_sms": true,
     "addresses": [
       {
         "id": 1001,
@@ -1724,7 +1724,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">date_of_birth</code> <code>string</code></p>
+                          <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
                         </td>
                         <td>The Person's date of birth.</td>
                       </tr>
@@ -1751,7 +1751,7 @@
                       </tr>
                       <tr>
                         <td>
-                          <p class="cell"><code class="attribute">messaging_enabled</code> <code>boolean</code></p>
+                          <p class="cell"><code class="attribute">messaging_enabled_sms</code> <code>boolean</code></p>
                         </td>
                         <td>Is messaging enabled for the Person?</td>
                       </tr>
@@ -1791,7 +1791,7 @@
     "phone": "+17183211234",
     "email": "testguy@example.com",
     "photo_url": "https://example.com/pic.png",
-    "messaging_enabled": true,
+    "messaging_enabled_sms": true,
     "addresses": [
       {
         "id": 1001,
@@ -2287,6 +2287,12 @@
                               </tr>
                               <tr>
                                 <td>
+                                  <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's date of birth</td>
+                              </tr>
+                              <tr>
+                                <td>
                                   <p class="cell"><code class="attribute">biological_sex</code> <code>string</code></p>
                                 </td>
                                 <td>The Patient's biological sex</td>
@@ -2536,6 +2542,7 @@
       "biological_sex": "male",
       "gender": "male",
       "phone": "8048675309",
+      "dob": "1980-04-08",
       "email": "tony@starkindustries.com",
       "messaging_enabled_sms": true,
       "messaging_enabled_email": true
@@ -2693,6 +2700,12 @@
                                   <p class="small">required</p>
                                 </td>
                                 <td>The Patient's email address</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's date of birth</td>
                               </tr>
                               <tr>
                                 <td>
@@ -2934,6 +2947,7 @@
       "first_name": "Anthony", // required
       "last_name": "Stark", // required
       "gender": "male",
+      "dob": "1980-04-08",
       "phone": "+18048675309", // required
       "email": "tony@starkindustries.com", // required
       "messaging_enabled_sms": true
@@ -3834,6 +3848,12 @@
                                   <p class="cell"><code class="attribute">email</code> <code>string</code></p>
                                 </td>
                                 <td>The Patient's email address</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="cell"><code class="attribute">dob</code> <code>string</code></p>
+                                </td>
+                                <td>The Patient's date of birth</td>
                               </tr>
                               <tr>
                                 <td>
