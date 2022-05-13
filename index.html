@@ -4100,6 +4100,68 @@
                     </tbody>
                   </table>
                 </div>
+                <div class="row">
+                  <div class="col-6">
+                    <h4>Retrieve All Services</h4>
+                    <p><code>GET https://api.workpath.co/services?vendor=[organization_id]
+                    <p>Retrieve information about all of your organization's Services including (but not limited to):</p>
+                 </p>
+                  <ul style="list-style-type: circle;">
+                    <li><strong>ID</strong> - The ID required when submitting an Intake and retrieving a Service in our API.</li>
+                    <li><strong>Name</strong> - The name used to display to Users, Specialists, and the Patient.</li>
+                    <li><strong>Description</strong> - the appointment is available for third-party labor groups in your network to claim/fulfill</li>
+                    <li><strong>Kit and Supplies</strong> - Kits and Supplies required for the appointment</li>
+                    <li><strong>Steps to Complete</strong> - All Steps shown to the Specialist</li>
+                    <li><strong>Scheduling Requirements</strong> - When the patient is able to schedule their appointment based on days in advance, days of the week, time of day, etc.</li>
+                  </ul>
+                 </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">organization_id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Your Organization ID.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <h4>Retrieve Specific Service</h4>
+                    <p><code>GET https://api.workpath.co/services/[id]
+                    <p>Retrieve information about a Service including (but not limited to):</p>
+                     <ul style="list-style-type: circle;">
+                      <li><strong>ID</strong> - The ID required when submitting an Intake and retrieving a Service in our API.</li>
+                      <li><strong>Name</strong> - The name used to display to Users, Specialists, and the Patient.</li>
+                      <li><strong>Description</strong> - the appointment is available for third-party labor groups in your network to claim/fulfill</li>
+                      <li><strong>Kit and Supplies</strong> - Kits and Supplies required for the appointment</li>
+                      <li><strong>Steps to Complete</strong> - All Steps shown to the Specialist</li>
+                      <li><strong>Scheduling Requirements</strong> - When the patient is able to schedule their appointment based on days in advance, days of the week, time of day, etc.</li>
+                    </ul>
+                 </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h5>Request Parameters</h5>
+                  <table class="table table-sm table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="cell"><code class="attribute">id</code> <code>number</code></p>
+                          <p class="small">required</p>
+                        </td>
+                        <td>Service ID (see Retrieve All Services section).</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
@@ -4114,7 +4176,7 @@
               <div class="row">
                 <div class="col-6">
                   <p>
-                    Webhooks allow API users to receive notifications when events occur on appointments that were created via their Workpath integration. The webhook URL will receive a POST request containing the JSON event data.
+                    Webhooks allow API users to receive notifications when events occur on appointments that were created via their Workpath integration (after an Intake has been converted to an Appointment). The webhook URL will receive a POST request containing the JSON event data.
                   </p>
                   <p>
                     <i>Note</i> These methods use HTTP Basic authentication with an API key and password. The webhook applies to all appointments created for the organization of the provided API key, regardless of the user context.
